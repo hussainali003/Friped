@@ -1,1 +1,7 @@
-export const background = '#FFFFFF';
+export const white = '#FFFFFF';
+export const primary = '#EDDBDE';
+export const secondary = '#2C3E50';
+export const background_one = '#FFFFFF';
+export const background_two = '#EDDBDE';
+export const dashLine = '#B76E79';
+export const text_dim = '#666666';
