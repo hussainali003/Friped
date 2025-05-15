@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import screens from src
 import LoginScreen from './auth/screens/LoginScreen';
 import VerifyScreen from './auth/screens/VerifyScreen';
+import ProfileScreen from './profile/screens/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="Verify" component={VerifyScreen} />
             <Stack.Screen name="Login" component={LoginScreen}/>
         </Stack.Navigator>
