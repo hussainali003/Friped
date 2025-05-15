@@ -1,18 +1,20 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, TextInput, View} from 'react-native';
 import MapView from 'react-native-maps';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { Button, StackHeader } from '../../common';
 
 import SearchAltSvg from '../../assets/images/search_alt.svg';
 import PinLightSvg from '../../assets/images/pin_light.svg';
 
 import * as colors from '../../config/colors';
 
-import { Button, StackHeader } from '../../common';
-
 const LocationProvideScreen = () => {
+    const insets = useSafeAreaInsets();
+
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
             <StackHeader mb={26} title="Provide your location" />
             <View style={styles.mapContainer}>
                 <View style={styles.inputContainer}>
@@ -39,7 +41,7 @@ const LocationProvideScreen = () => {
                     <Button title="Confirm location" />
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 

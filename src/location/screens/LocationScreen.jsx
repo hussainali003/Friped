@@ -1,6 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import {   StyleSheet, Text,  View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, Text,  View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+// import components from common
+import { Button } from '../../common';
 
 // import images from assets
 import PersonStandingSvg from '../../assets/images/person_standing.svg';
@@ -8,12 +11,11 @@ import PersonStandingSvg from '../../assets/images/person_standing.svg';
 // import colors from config
 import * as colors from '../../config/colors';
 
-// import components from common
-import { Button } from '../../common';
-
 const LocationScreen = () => {
+    const insets = useSafeAreaInsets();
+
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
             <View style={styles.personStandingContainer}>
                 <PersonStandingSvg />
             </View>
@@ -22,7 +24,7 @@ const LocationScreen = () => {
             <Button title="Send OTP" mb={10} />
             <Button type="secondary" title="Add manually" mb={126} />
             <Text style={styles.footerText}>We only access your location while your using the app to improve your experience.</Text>
-        </SafeAreaView>
+        </View>
     );
 };
 

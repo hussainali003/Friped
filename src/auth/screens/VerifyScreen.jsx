@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, StackHeader } from '../../common';
 
 import * as colors from '../../config/colors';
 
 const VerifyScreen = () => {
+    const insets = useSafeAreaInsets();
     const [otp, setOtp] = useState(new Array(5).fill(''));
     const inputs = useRef([]);
 
@@ -23,7 +24,7 @@ const VerifyScreen = () => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
             <StackHeader title="Verify OTP" mb={25}/>
             <Text style={[styles.text, styles.text_one]}>Enter OTP sent on  +91  9896787494</Text>
             <Text style={[styles.text, styles.text_two]}>Enter OTP</Text>
@@ -45,7 +46,7 @@ const VerifyScreen = () => {
             </View>
             <Text style={[styles.text, styles.text_three]}>Resend OTP in 25 sec</Text>
             <Button title="Verify Now" />
-        </SafeAreaView>
+        </View>
     );
 };
 

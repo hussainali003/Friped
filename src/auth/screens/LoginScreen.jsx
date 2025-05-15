@@ -1,5 +1,8 @@
 import { TouchableOpacity,  StyleSheet, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+// import components from common
+import { Button } from '../../common';
 
 // import images from assets
 import AppNameSvg from '../../assets/images/app_name.svg';
@@ -8,15 +11,16 @@ import FranceFlagSvg from '../../assets/images/france_flag.svg';
 import ChevronDownSvg from '../../assets/images/chevron_down.svg';
 import PersonSettingSvg from '../../assets/images/person_setting.svg';
 
+
+
 // import colors from config
 import * as colors from '../../config/colors';
 
-// import components from common
-import { Button } from '../../common';
-
 const LoginScreen = () => {
+    const insets = useSafeAreaInsets();
+
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
             <View style={styles.appNameSvgContainer}>
                 <AppNameSvg />
             </View>
@@ -46,12 +50,13 @@ const LoginScreen = () => {
                 <GoogleSvg />
             </TouchableOpacity>
             <Text style={styles.footerText}>By continuing you will accept the <Text style={styles.linkText}>Terms of Use</Text> and <Text style={styles.linkText}> Privacy and Policy</Text> of Cashlance.</Text>
-        </SafeAreaView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: colors.background_two,
     },
     appNameSvgContainer: {
@@ -118,7 +123,6 @@ const styles = StyleSheet.create({
     },
     footerText: {
         marginHorizontal: 16,
-        marginBottom: 34,
         textAlign: 'center',
         fontFamily: 'Lato-Light',
         color: colors.text_dim,
