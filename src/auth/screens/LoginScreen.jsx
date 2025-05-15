@@ -11,6 +11,9 @@ import PersonSettingSvg from '../../assets/images/person_setting.svg';
 // import colors from config
 import * as colors from '../../config/colors';
 
+// import components from common
+import { Button } from '../../common';
+
 const LoginScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
@@ -33,15 +36,13 @@ const LoginScreen = () => {
                 </View>
                 <TextInput inputMode="numeric" maxLength={10} placeholder="Enter phone number" placeholderTextColor={colors.text_dim} style={styles.input}/>
             </View>
-            <TouchableOpacity title="Send OTP" style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>Send OTP</Text>
-            </TouchableOpacity>
+            <Button title="Send OTP" mb={25} />
             <View style={styles.textContainer}>
                 <View style={styles.dashLine}/>
                 <Text style={styles.orText}>OR</Text>
                 <View style={styles.dashLine}/>
             </View>
-            <TouchableOpacity title="Send OTP" style={styles.googleSvgContainer}>
+            <TouchableOpacity style={styles.googleSvgContainer}>
                 <GoogleSvg />
             </TouchableOpacity>
             <Text style={styles.footerText}>By continuing you will accept the Terms of Use and Privacy and Policy of Cashlance.</Text>
@@ -105,18 +106,6 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         color: colors.text_dim,
-    },
-    loginButton: {
-        paddingVertical: 14,
-        marginHorizontal: 16,
-        marginBottom: 25,
-        borderRadius: 10,
-        backgroundColor: colors.secondary,
-    },
-    loginButtonText: {
-        textAlign: 'center',
-        fontSize: 16,
-        color: colors.white,
     },
     orText: {
         fontSize: 14,

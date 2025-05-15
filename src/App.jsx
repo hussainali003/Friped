@@ -1,14 +1,16 @@
 // import from node_modules
 import { useEffect } from 'react';
-import {StyleSheet, View} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-// import colors from config
-import * as colors from './config/colors';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // import screens from src
 import LoginScreen from './auth/screens/LoginScreen';
+import VerifyScreen from './auth/screens/VerifyScreen';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
 
@@ -22,19 +24,14 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <View style={styles.container}>
-        <LoginScreen />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Verify" component={VerifyScreen} />
+            <Stack.Screen name="Login" component={LoginScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: colors.background_two,
-  },
-});
 
 export default App;
