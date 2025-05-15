@@ -1,20 +1,21 @@
 import { useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import * as colors from '../../config/colors';
+import { Button, DropDown, StackHeader, TextInput } from '../../common';
 
 import CoverPhotoSvg from '../../assets/images/cover_photo.svg';
 import CoverPencilSvg from '../../assets/images/cover_pencil.svg';
 
-import { Button, DropDown, StackHeader, TextInput } from '../../common';
+import * as colors from '../../config/colors';
 
 const ProfileScreen = () => {
+    const insets = useSafeAreaInsets();
     const [selectedGender, setSelectGender] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, {paddingTop: insets.top}]}>
             <StackHeader mb={26} title="Profile"/>
             <View style={styles.coverPhotoContainer}>
                 <CoverPhotoSvg />
@@ -37,8 +38,7 @@ const ProfileScreen = () => {
                 <DropDown selected={selectedRole} setSelected={setSelectedRole} roles={['Single', 'Both']} />
                 <Button title="Save" style={styles.button} />
             </ScrollView>
-            <View />
-        </SafeAreaView>
+        </View>
     );
 };
 
