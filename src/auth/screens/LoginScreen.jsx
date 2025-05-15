@@ -45,7 +45,7 @@ const LoginScreen = () => {
             <TouchableOpacity style={styles.googleSvgContainer}>
                 <GoogleSvg />
             </TouchableOpacity>
-            <Text style={styles.footerText}>By continuing you will accept the Terms of Use and Privacy and Policy of Cashlance.</Text>
+            <Text style={styles.footerText}>By continuing you will accept the <Text style={styles.linkText}>Terms of Use</Text> and <Text style={styles.linkText}> Privacy and Policy</Text> of Cashlance.</Text>
         </SafeAreaView>
     );
 };
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     loginText: {
+        fontFamily: 'Lato-Bold',
         fontSize: 20,
-        fontWeight: 600,
     },
     dashLine: {
         width: 41,
@@ -105,11 +105,12 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+        fontFamily: 'Lato-Light',
         color: colors.text_dim,
     },
     orText: {
         fontSize: 14,
-        fontWeight: 600,
+        fontFamily: 'Lato-Bold',
     },
     googleSvgContainer: {
       alignItems: 'center',
@@ -119,7 +120,12 @@ const styles = StyleSheet.create({
         marginHorizontal: 16,
         marginBottom: 34,
         textAlign: 'center',
+        fontFamily: 'Lato-Light',
         color: colors.text_dim,
+    },
+    linkText: {
+        color: colors.text_dim,
+        fontFamily: 'Lato-Regular',
     },
 });
 
