@@ -15,7 +15,7 @@ const ProfileScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StackHeader title="Profile"/>
+            <StackHeader mb={26} title="Profile"/>
             <View style={styles.coverPhotoContainer}>
                 <CoverPhotoSvg />
                 <TouchableOpacity style={styles.coverPencil}>
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 15,
         paddingVertical: 30,
-        marginTop: 26,
         backgroundColor: colors.secondary,
     },
     coverPencil: {

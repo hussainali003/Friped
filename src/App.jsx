@@ -11,6 +11,7 @@ import LoginScreen from './auth/screens/LoginScreen';
 import VerifyScreen from './auth/screens/VerifyScreen';
 import ProfileScreen from './profile/screens/ProfileScreen';
 import LocationScreen from './location/screens/LocationScreen';
+import LocationProvideScreen from './location/screens/LocationProvideScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="LocationProvide" component={LocationProvideScreen} />
             <Stack.Screen name="Location" component={LocationScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="Verify" component={VerifyScreen} />
