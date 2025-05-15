@@ -3,17 +3,8 @@ import { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-// import screens from src
-import LoginScreen from './auth/screens/LoginScreen';
-import VerifyScreen from './auth/screens/VerifyScreen';
-import ProfileScreen from './profile/screens/ProfileScreen';
-import LocationScreen from './location/screens/LocationScreen';
-import LocationProvideScreen from './location/screens/LocationProvideScreen';
-
-const Stack = createNativeStackNavigator();
+// import appNavigator from navigation
+import AppNavigator from './navigation/AppNavigator';
 
 const App = () => {
 
@@ -27,15 +18,7 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="LocationProvide" component={LocationProvideScreen} />
-            <Stack.Screen name="Location" component={LocationScreen} />
-            <Stack.Screen name="Profile" component={ProfileScreen} />
-            <Stack.Screen name="Verify" component={VerifyScreen} />
-            <Stack.Screen name="Login" component={LoginScreen}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <AppNavigator />
     </SafeAreaProvider>
   );
 };
