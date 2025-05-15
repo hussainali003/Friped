@@ -2,10 +2,17 @@ import {  TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import * as colors from '../config/colors';
 
-const Button = ({mb, title, children, textStyle, style}) => {
+const Button = ({type, mb, title, children, textStyle, style}) => {
+    const secondary = {
+        backgroundColor: 'transparent',
+        borderWidth: 1,
+        borderColor: colors.secondary,
+    };
+
+
     return (
-        <TouchableOpacity  title="Send OTP" style={[styles.container, {marginBottom: mb}, style]}>
-            <Text style={[styles.text, textStyle]}>{title}</Text>
+        <TouchableOpacity  title="Send OTP" style={[styles.container, type === 'secondary' && secondary, {marginBottom: mb}, style]}>
+            <Text style={[styles.text, type === 'secondary' && {color: colors.secondary}, textStyle]}>{title}</Text>
             {children}
         </TouchableOpacity>
     );
