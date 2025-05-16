@@ -5,7 +5,7 @@ import AuthStack from './AuthStack';
 
 
 const AppNavigator = () => {
-    const isLogin = false;
+    const isLogin = true;
 
     return (
       <NavigationContainer>

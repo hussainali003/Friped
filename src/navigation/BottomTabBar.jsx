@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileScreen from '../profile/screens/ProfileScreen';
 
 import TabBar from './TabBar';
+import HomeScreen from '../home/screens/HomeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +15,7 @@ const BottomTabBar = () => {
       tabBar={renderTabBar}
       screenOptions={{headerShown: false}}
     >
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
