@@ -3,6 +3,8 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import * as colors from '../config/colors';
+
 function TabBar({ state, navigation }) {
   const insets = useSafeAreaInsets();
 
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 10,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background_two,
   },
   tabButton: {
     padding: 10,
