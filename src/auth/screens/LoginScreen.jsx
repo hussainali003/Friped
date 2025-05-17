@@ -119,9 +119,10 @@ const styles = StyleSheet.create({
     },
     googleSvgContainer: {
       alignItems: 'center',
-      marginBottom: 18,
     },
     footerText: {
+        marginTop: 'auto',
+        marginBottom: 28,
         marginHorizontal: 16,
         textAlign: 'center',
         fontFamily: 'Lato-Light',

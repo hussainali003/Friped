@@ -15,7 +15,7 @@ const LocationProvideScreen = () => {
 
     return (
         <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
-            <StackHeader mb={26} title="Provide your location" />
+            <StackHeader title="Provide your location" />
             <View style={styles.mapContainer}>
                 <View style={styles.inputContainer}>
                     <SearchAltSvg />
