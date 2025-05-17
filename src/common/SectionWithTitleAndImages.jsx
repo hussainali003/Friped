@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import * as colors from '../config/colors';
 
@@ -7,22 +7,22 @@ const SectionWithTitleAndImages = ({title, leftTitle, leftImage,rightTitle, righ
             <View style={[styles.container, style]}>
                 {title && <Text style={styles.title}>{title}</Text>}
                 <View style={styles.contentContainer}>
-                    <View style={styles.imageWithLabelContainer}>
+                    <TouchableOpacity style={styles.imageWithLabelContainer}>
                         {leftImage && (
                             <>
                                 <Image source={leftImage} style={styles.image}/>
                                 <Text style={styles.imageText}>{leftTitle}</Text>
                             </>
                         )}
-                    </View>
-                    <View style={styles.imageWithLabelContainer}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.imageWithLabelContainer}>
                         {rightImage && (
                             <>
                                 <Image source={rightImage} style={styles.image}/>
                                 <Text style={styles.imageText}>{rightTitle}</Text>
                             </>
                         )}
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
     );

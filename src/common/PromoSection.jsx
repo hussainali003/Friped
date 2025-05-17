@@ -4,10 +4,9 @@ import HangingClothesSvg from '../assets/images/hanging_clothes.svg';
 
 import * as colors from '../config/colors';
 
-const PromoSection = () => {
-
+const PromoSection = ({style}) => {
     return (
-        <View style={styles.promoContainer}>
+        <View style={[styles.promoContainer, style]}>
             <View style={styles.promoContentContainer}>
                 <Text style={[styles.text, styles.promoContentContainerText_one]}>Generate income</Text>
                 <Text style={[styles.text, styles.promoContentContainerText_two]}>From the clothing in your wardrobe.</Text>

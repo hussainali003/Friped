@@ -1,13 +1,7 @@
-import { StyleSheet, View , ScrollView, Text } from 'react-native';
+import { StyleSheet, View , ScrollView} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MainHeader } from '../../common';
-
-import SectionWithTitleAndImages from '../components/SectionWithTitleAndImages';
-
-import DeliveryInfoSection from '../sections/DeliveryInfoSection';
-import PromoSection from '../sections/PromoSection';
-
+import { MainHeader, DeliveryInfoSection, PromoSection, SectionWithTitleAndImages, NoticeSection } from '../../common';
 
 import GenderBoyPng from '../../assets/images_png/gender_boy.png';
 import GenderGirlPng from '../../assets/images_png/gender_girl.png';
@@ -20,8 +14,6 @@ import StyleBohemianPng from '../../assets/images_png/style_bohemian.png';
 import MaterialSatinPng from '../../assets/images_png/material_satin.png';
 import MaterialLacePng from '../../assets/images_png/material_lace.png';
 
-import TimeLimitSvg from '../../assets/images/time_limit.svg';
-
 import * as colors from '../../config/colors';
 
 const HomeScreen = () => {
@@ -32,7 +24,7 @@ const HomeScreen = () => {
             <MainHeader title="Wedding Dresses"/>
             <ScrollView contentContainerStyle={styles.contentContainer} style={styles.scrollContainer}>
                 <DeliveryInfoSection />
-                <PromoSection />
+                <PromoSection style={styles.promoSection} />
                 <SectionWithTitleAndImages title="Choose based on gender"
                     leftImage={GenderBoyPng}
                     leftTitle="Men's fashion"
@@ -45,13 +37,7 @@ const HomeScreen = () => {
                     rightImage={OccasionCeremonyPng}
                     rightTitle="Formal Ceremony"
                 />
-                <View style={styles.noticeContainer}>
-                    <View style={styles.noticeTextContainer}>
-                        <Text style={styles.noticeTextContainerText_one}>4-Hour Turnaround</Text>
-                        <Text style={styles.noticeTextContainerText_two}>Your dress availability was confirmed in just four hours.</Text>
-                    </View>
-                    <TimeLimitSvg />
-                </View>
+                <NoticeSection />
                 <SectionWithTitleAndImages title="By Region/Country/Culture"
                     leftImage={RegionEuropeanPng}
                     leftTitle="European"
@@ -87,29 +73,8 @@ const styles = StyleSheet.create({
     contentContainer: {
         paddingBottom: 20,
     },
-    noticeContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        columnGap: 50,
-        marginTop: 30,
-        paddingVertical: 14,
-        paddingHorizontal: 16,
-        backgroundColor: colors.secondary,
-    },
-    noticeTextContainer: {
-        flex: 1,
-        rowGap: 10,
-    },
-    noticeTextContainerText_one: {
-        fontSize: 20,
-        fontFamily: 'Lato-Regular',
-        color: colors.white,
-    },
-    noticeTextContainerText_two: {
-        fontSize: 12,
-        fontFamily: 'Lato-Regular',
-        color: '#DCDCDC',
+    promoSection: {
+        marginTop: 0,
     },
 });
 
