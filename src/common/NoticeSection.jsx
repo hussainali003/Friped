@@ -4,9 +4,9 @@ import TimeLimitSvg from '../assets/images/time_limit.svg';
 
 import * as colors from '../config/colors';
 
-const NoitceSection = () => {
+const NoitceSection = ({style}) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, style]}>
             <View style={styles.noticeTextContainer}>
                 <Text style={styles.noticeTextContainerText_one}>4-Hour Turnaround</Text>
                 <Text style={styles.noticeTextContainerText_two}>Your dress availability was confirmed in just four hours.</Text>
