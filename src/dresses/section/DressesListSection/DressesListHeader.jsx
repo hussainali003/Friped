@@ -2,32 +2,14 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import SelectedDressCategory from './components/SelectedDressCategory';
 
-import WeddingGownPng from '../../../assets/images_png/wedding_gown.png';
-import WeddingMaidPng from '../../../assets/images_png/wedding_maid.png';
-import WeddingGuestPng from '../../../assets/images_png/wedding_guest.png';
+import data from '../../../static/DressesCategory';
 
 import * as colors from '../../../config/colors';
-
-const catergoryData = [
-    {
-        title: 'Bridal Gown',
-        image: WeddingGownPng,
-    },
-    {
-        title: 'Bridesmaid',
-        image: WeddingMaidPng,
-    },
-    {
-        title: 'Guests',
-        image: WeddingGuestPng,
-    },
-];
-
 
 const DressesListHeader = () => {
     return (
         <>
-            <SelectedDressCategory data={catergoryData} />
+            <SelectedDressCategory data={data} />
             <View style={styles.textContainer}>
                 <Text style={styles.textContent}>Dresses near you</Text>
                 <Text style={styles.textContent_dim}>(50km)</Text>

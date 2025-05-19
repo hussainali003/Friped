@@ -1,20 +1,12 @@
 import { ScrollView, StyleSheet} from 'react-native';
 
-import * as colors from '../../../config/colors';
-
 import DressesListEmpty from './DressesListEmpty';
 import DressesListItem from './DressesListItem';
 import DressesListHeader from './DressesListHeader';
 
-const chunkArray = (array) => {
-    const newArray = [];
+import chunkArray from '../../../util/ChunkArray';
 
-    for (let i = 0; i < array.length; i += 2) {
-        newArray.push([array[i], array[i + 1]]);
-    }
-
-    return newArray;
-};
+import * as colors from '../../../config/colors';
 
 const DressesListSection = ({data = []}) => {
     const mutatedData = chunkArray(data);
