@@ -1,19 +1,34 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import MainStack from './MainStack';
-import AuthStack from './AuthStack';
+import BottomTab from './BottomTab';
 
+import LoginScreen from '../auth/screens/LoginScreen';
+import VerifyScreen from '../auth/screens/VerifyScreen';
+import LocationScreen from '../location/screens/LocationScreen';
+import LocationProvideScreen from '../location/screens/LocationProvideScreen';
+
+const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
     const isLogin = true;
 
     return (
       <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false, animation: 'fade'}}>
             {isLogin ? (
-                <MainStack />
+                <>
+                    <Stack.Screen name="BottomTab" component={BottomTab} />
+                </>
             ) : (
-                <AuthStack />
+                <>
+                    <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="Verify" component={VerifyScreen} />
+                    <Stack.Screen name="LocationProvide" component={LocationProvideScreen} />
+                    <Stack.Screen name="Location" component={LocationScreen} />
+                </>
             )}
+        </Stack.Navigator>
       </NavigationContainer>
     );
 };

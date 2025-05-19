@@ -1,4 +1,5 @@
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import ArrowLeftSvg from '../assets/images/arrow_left_light.svg';
 import SearchAltLightSvg from '../assets/images/search_alt_light.svg';
@@ -6,9 +7,19 @@ import MeassageLightSvg from '../assets/images/message_light.svg';
 import BellPinLightSvg from '../assets/images/bell_pin_light.svg';
 
 const Header = ({title, mb, style}) => {
+    const navigation = useNavigation();
+
+    const handleNavigate = () => {
+        if (navigation.canGoBack()) {
+            navigation.goBack();
+        } else {
+            navigation.navigate('Home');
+        }
+    };
+
     return (
         <View style={[styles.container, {marginBottom: mb}, style]}>
-            <TouchableOpacity style={styles.leftButton}>
+            <TouchableOpacity onPress={handleNavigate} style={styles.leftButton}>
                 <ArrowLeftSvg />
             </TouchableOpacity>
             <Text style={styles.text}>{title}</Text>

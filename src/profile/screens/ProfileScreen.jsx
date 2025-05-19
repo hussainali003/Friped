@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { Button, DropDown, StackHeader, TextInput } from '../../common';
+import { Button, DropDown, Header, TextInput } from '../../common';
 
 import CoverPhotoSvg from '../../assets/images/cover_photo.svg';
 import CoverPencilSvg from '../../assets/images/cover_pencil.svg';
@@ -16,7 +16,7 @@ const ProfileScreen = () => {
 
     return (
         <View style={[styles.container, {paddingTop: insets.top}]}>
-            <StackHeader mb={26} title="Profile"/>
+            <Header title="Profile"/>
             <View style={styles.coverPhotoContainer}>
                 <CoverPhotoSvg />
                 <TouchableOpacity style={styles.coverPencil}>

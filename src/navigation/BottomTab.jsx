@@ -1,26 +1,28 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import HomeStack from './HomeStack';
+import CategoryScreen from '../category/screens/CategoryScreen';
 import ProfileScreen from '../profile/screens/ProfileScreen';
 
-import TabBar from './TabBar';
+import TabBar from './Tab';
 import HomeScreen from '../home/screens/HomeScreen';
-import CategoryScreen from '../category/screens/CategoryScreen';
 
 const Tab = createBottomTabNavigator();
 
-const renderTabBar = (props) => <TabBar {...props} />;
-
-const BottomTabBar = () => {
+const BottomTab = () => {
   return (
     <Tab.Navigator
-      tabBar={renderTabBar}
-      screenOptions={{headerShown: false}}
+    tabBar={renderTabBar}
+    screenOptions={{headerShown: false}}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="HomeTab" component={HomeStack} />
       <Tab.Screen name="Category" component={CategoryScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };
 
-export default BottomTabBar;
+const renderTabBar = (props) => <TabBar {...props} />;
+
+export default BottomTab;

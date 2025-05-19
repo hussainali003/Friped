@@ -14,7 +14,7 @@ const DressesScreen = ({navigation}) => {
     const insets = useSafeAreaInsets();
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title={navigation.route || 'dresses'} />
             <DeliveryInfoSection />
             <FilterSection />

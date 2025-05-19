@@ -14,7 +14,7 @@ const CategoryScreen = () => {
     const mutatedData = chunkArray(data);
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title="Categories we have" />
             <ScrollView contentContainerStyle={styles.contentContainer} style={styles.scrollContainer}>
                 <DeliveryInfoSection />

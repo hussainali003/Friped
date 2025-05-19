@@ -20,7 +20,7 @@ const HomeScreen = () => {
     const mutatedData = chunkArray(data);
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View style={[styles.container, {paddingTop: insets.top}]}>
             <MainHeader title="Wedding Dresses"/>
             <ScrollView contentContainerStyle={styles.contentContainer} style={styles.scrollContainer}>
                 <DeliveryInfoSection />

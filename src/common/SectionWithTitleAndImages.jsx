@@ -1,13 +1,20 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import * as colors from '../config/colors';
 
 const SectionWithTitleAndImages = ({title, leftTitle, leftImage,rightTitle, rightImage, style}) => {
+    const navigation = useNavigation();
+
+    const handleNavigate = () => {
+        navigation.navigate('HomeTab', { screen: 'Dresses' });
+    };
+
     return (
             <View style={[styles.container, style]}>
                 {title && <Text style={styles.title}>{title}</Text>}
                 <View style={styles.contentContainer}>
-                    <TouchableOpacity style={styles.imageWithLabelContainer}>
+                    <TouchableOpacity onPress={handleNavigate} style={styles.imageWithLabelContainer}>
                         {leftImage && (
                             <>
                                 <Image source={leftImage} style={styles.image}/>
@@ -15,7 +22,7 @@ const SectionWithTitleAndImages = ({title, leftTitle, leftImage,rightTitle, righ
                             </>
                         )}
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.imageWithLabelContainer}>
+                    <TouchableOpacity onPress={handleNavigate} style={styles.imageWithLabelContainer}>
                         {rightImage && (
                             <>
                                 <Image source={rightImage} style={styles.image}/>
