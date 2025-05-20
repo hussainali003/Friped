@@ -44,7 +44,7 @@ const  Tab = ({ state, navigation }) => {
             {label === 'Category' && (
               isFocused ? <WidgetPinkSvg /> : <WidgetLightSvg />
             )}
-            <Text style={{ color: isFocused ? colors.dashLine : colors.text_primary }}>
+            <Text style={[styles.buttonText, { color: isFocused ? colors.dashLine : colors.text_primary }]}>
               {label}
             </Text>
           </TouchableOpacity>
@@ -71,9 +71,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     rowGap: 4,
-    paddingVertical: 12,
+    paddingVertical: 8,
     paddingHorizontal: 18,
 
+  },
+  buttonText: {
+    fontSize: 12,
+    fontFamily: 'Lato-Regular',
   },
 });
 

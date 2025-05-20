@@ -10,12 +10,12 @@ import data from '../../static/Dresses';
 
 import * as colors from '../../config/colors';
 
-const DressesScreen = ({navigation}) => {
+const DressesScreen = ({}) => {
     const insets = useSafeAreaInsets();
 
     return (
         <View style={[styles.container, {paddingTop: insets.top}]}>
-            <Header title={navigation.route || 'dresses'} />
+            <Header title="Dresses" />
             <DeliveryInfoSection />
             <FilterSection />
             <DressesListSection data={data} />

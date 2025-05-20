@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,7 +12,12 @@ import * as colors from '../../config/colors';
 
 const CategoryScreen = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
     const mutatedData = chunkArray(data);
+
+    const handleNavigate = () => {
+        navigation.navigate('HomeTab', {screen: 'DressDetail'});
+    };
 
     return (
         <View style={[styles.container, {paddingTop: insets.top}]}>
@@ -39,6 +45,7 @@ const CategoryScreen = () => {
                             leftImage={item[0]?.image}
                             rightTitle={item[1]?.title}
                             rightImage={item[1]?.image}
+                            onPress={handleNavigate}
                             style={index === 0 && styles.sectionWithTitleAndImages_one}
                         />
                     );

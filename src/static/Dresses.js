@@ -48,6 +48,7 @@ const data = [
         title: 'N',
     },
     {
+        groupedTitle: 'Other categories',
         title: 'Men’s fashion',
         image: GenderBoyPng,
     },

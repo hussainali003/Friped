@@ -22,19 +22,18 @@ const styles = StyleSheet.create({
     textContainer: {
         flexDirection: 'row',
         columnGap: 5,
-        marginTop: 24,
+        marginTop: 20,
         marginHorizontal: 16,
-        marginBottom: 18,
     },
     textContent: {
-        fontFamily: 'Lato-Regular',
         fontSize: 20,
+        fontFamily: 'Lato-Regular',
         color: colors.text_primary,
     },
     textContent_dim: {
         alignSelf: 'flex-end',
-        fontFamily: 'Lato-Regular',
         fontSize: 12,
+        fontFamily: 'Lato-Regular',
         color: colors.text_dim,
     },
 });
