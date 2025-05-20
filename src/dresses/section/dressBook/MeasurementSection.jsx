@@ -4,7 +4,12 @@ import * as colors from '../../../config/colors';
 import DressTextInput from '../../components/DressTextInput';
 import { Button } from '../../../common';
 
-const MeasurementSection = () => {
+const MeasurementSection = ({setIsModalVisiable}) => {
+
+    const handleModalOpen = () => {
+        setIsModalVisiable(true);
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.textContainer}>
@@ -23,7 +28,7 @@ const MeasurementSection = () => {
             <View style={styles.inputContainer}>
                 <DressTextInput label="Message" placeholder="Type here....." inputStyle={styles.input}/>
             </View>
-            <Button title="Send request" style={styles.button} />
+            <Button onPress={handleModalOpen} title="Send request" style={styles.button} />
         </View>
     );
 };
