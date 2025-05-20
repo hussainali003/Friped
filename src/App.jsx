@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // import appNavigator from navigation
 import AppNavigator from './navigation/AppNavigator';
@@ -17,9 +18,11 @@ const App = () => {
   },[]);
 
   return (
-    <SafeAreaProvider>
-      <AppNavigator />
-    </SafeAreaProvider>
+    <GestureHandlerRootView>
+      <SafeAreaProvider>
+        <AppNavigator />
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 };
 
