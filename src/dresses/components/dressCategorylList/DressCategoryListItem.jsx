@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { NoticeSection, SectionWithTitleAndImages } from '../../../../common';
+import { NoticeSection, SectionWithTitleAndImages } from '../../../common';
 
-const DressDetailListItem = ({arrItem}) => {
+const DressCategoryListItem = ({arrItem}) => {
     const navigation = useNavigation();
 
     if (arrItem[0]?.title === 'Notice') {
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DressDetailListItem;
+export default DressCategoryListItem;

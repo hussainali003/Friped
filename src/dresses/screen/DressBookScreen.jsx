@@ -3,26 +3,24 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DeliveryInfoSection, Header } from '../../common';
 
-import SellerSection from '../section/dressDetail/SellerSection';
 import DressCategorylList from '../components/dressCategorylList';
-import CarouselSection from '../section/dressDetail/CarouselSection';
-import DescriptionSection from '../section/dressDetail/DescriptionSection';
 
 import data from '../../static/DressDetail';
 
 import * as colors from '../../config/colors';
+import DetailSection from '../section/dressBook/DetailSection';
+import MeasurementSection from '../section/dressBook/MeasurementSection';
 
-const DressDetailScreen = ({name = 'Priya'}) => {
+const DressBookScreen = () => {
     const insets = useSafeAreaInsets();
 
     return (
         <View style={[styles.container, {paddingTop: insets.top}]}>
-            <Header title="Dresses Details" />
+            <Header title="Dress a book" />
             <ScrollView contentContainerStyle={styles.scrollViewContentContainer} style={styles.scrollViewContainer}>
                 <DeliveryInfoSection />
-                <CarouselSection />
-                <SellerSection />
-                <DescriptionSection />
+                <DetailSection />
+                <MeasurementSection />
                 <DressCategorylList data={data}/>
             </ScrollView>
         </View>
@@ -42,4 +40,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DressDetailScreen;
+export default DressBookScreen;

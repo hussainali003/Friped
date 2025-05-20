@@ -1,12 +1,12 @@
 import { ScrollView, StyleSheet} from 'react-native';
 
-import DressesListItem from './DressDetailListItem';
+import DressesListItem from './DressCategoryListItem';
 
-import chunkArray from '../../../../util/ChunkArray';
+import chunkArray from '../../../util/ChunkArray';
 
-import * as colors from '../../../../config/colors';
+import * as colors from '../../../config/colors';
 
-const DressDetailList = ({data = []}) => {
+const DressCategorylList = ({data = []}) => {
     const mutatedData = chunkArray(data);
 
     return (
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DressDetailList;
+export default DressCategorylList;

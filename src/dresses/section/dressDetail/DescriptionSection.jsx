@@ -1,8 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import * as colors from '../../../config/colors';
 
 const DescriptionSection = ({details}) => {
+    const navigation = useNavigation();
     const name = details?.name || 'Mermaid wedding dress';
     const depositePrice = details?.depositePrice || '20';
     const color = details?.color || 'White';
@@ -11,6 +13,10 @@ const DescriptionSection = ({details}) => {
     const location = details?.location || 'Available with in the 50km Radius around the Connaught Place delhi';
     const size = details?.size || 'M';
     const price = details?.price || '30';
+
+    const handleNavigate = () => {
+        navigation.navigate('HomeTab', {screen: 'DressBook'});
+    };
 
     return (
         <View style={styles.container}>
@@ -32,7 +38,7 @@ const DescriptionSection = ({details}) => {
             </View>
             <View style={styles.container_two}>
                 <Text style={[styles.text, styles.text_one]}>{`$${price} daily rental price`}</Text>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity onPress={handleNavigate} style={styles.button}>
                     <Text style={[styles.text, styles.buttonText]}>Book now</Text>
                     <View style={styles.buttonTextBorder}/>
                 </TouchableOpacity>
