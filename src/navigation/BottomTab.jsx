@@ -1,11 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import HomeStack from './HomeStack';
-import CategoryScreen from '../category/screens/CategoryScreen';
+import HomeScreen from '../home/screens/HomeScreen';
+import OrderScreen from '../order/screens/OrderScreen';
 import ProfileScreen from '../profile/screens/ProfileScreen';
+import CategoryScreen from '../category/screens/CategoryScreen';
+
+import HomeStack from './HomeStack';
 
 import TabBar from './Tab';
-import HomeScreen from '../home/screens/HomeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +17,7 @@ const BottomTab = () => {
     tabBar={renderTabBar}
     screenOptions={{headerShown: false}}
     >
+      <Tab.Screen name="Order" component={OrderScreen} />
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="HomeTab" component={HomeStack} />
       <Tab.Screen name="Category" component={CategoryScreen} />

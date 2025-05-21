@@ -7,6 +7,9 @@ import WidgetLightSvg from '../assets/images/widget_light.svg';
 import WidgetPinkSvg from '../assets/images/widget_pink.svg';
 import UserLightSvg from '../assets/images/user_alt_light.svg';
 import UserPinkSvg from '../assets/images/user_alt_pink.svg';
+import BasketLightSvg from '../assets/images/basket_alt_light.svg';
+import BasketPinkSvg from '../assets/images/basket_alt_pink.svg';
+
 
 import * as colors from '../config/colors';
 
@@ -43,6 +46,9 @@ const  Tab = ({ state, navigation }) => {
             )}
             {label === 'Category' && (
               isFocused ? <WidgetPinkSvg /> : <WidgetLightSvg />
+            )}
+            {label === 'Order' && (
+              isFocused ? <BasketPinkSvg /> : <BasketLightSvg />
             )}
             <Text style={[styles.buttonText, { color: isFocused ? colors.dashLine : colors.text_primary }]}>
               {label}
