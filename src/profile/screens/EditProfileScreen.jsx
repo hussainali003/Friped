@@ -9,7 +9,7 @@ import CoverPencilSvg from '../../assets/images/cover_pencil.svg';
 
 import * as colors from '../../config/colors';
 
-const ProfileScreen = () => {
+const EditProfileScreen = () => {
     const insets = useSafeAreaInsets();
     const [selectedGender, setSelectGender] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ProfileScreen;
+export default EditProfileScreen;
