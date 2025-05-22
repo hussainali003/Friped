@@ -5,7 +5,7 @@ import * as colors from '../config/colors';
 
 import ChevronDownSvg from '../assets/images/chevron_down.svg';
 
-const Dropdown = ({roles, selected, setSelected}) => {
+const Dropdown = ({label = 'Choose your role', roles, selected, setSelected, style, labelStyle, selectorStyle, selectTextStyle}) => {
   const [showOptions, setShowOptions] = useState(false);
 
   const handleSelect = (role) => {
@@ -14,13 +14,15 @@ const Dropdown = ({roles, selected, setSelected}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Choose your role</Text>
+    <View style={[styles.container, style]}>
+      {label !== '' && (
+        <Text style={[styles.label, labelStyle]}>{label}</Text>
+      )}
       <Pressable
-        style={styles.selector}
+        style={[styles.selector, selectorStyle]}
         onPress={() => setShowOptions(!showOptions)}
       >
-        <Text style={styles.selectedText}>
+        <Text style={[styles.selectedText, selectTextStyle]}>
           {selected || 'Select one'}
         </Text>
         <ChevronDownSvg />
