@@ -4,8 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, Header } from '../../common';
-
-import UserDetailSection from '../section/orderDetail/UserDetailSection';
+import UserDetail from '../components/UserDetail';
 
 import MondiaSvg from '../../assets/images/mondia.svg';
 import WeddingMermaidRegularPng from '../../assets/images_png/wedding_mermaid_regular.png';
@@ -39,7 +38,7 @@ const OrderDetailScreen = ({item}) => {
                     <Text style={styles.text_heading}>Order ID : {orderId}</Text>
                     <Text style={[styles.text_heading,  {color: status === 'accepted' ? '#589D00' : '#C20000', textTransform: 'capitalize', marginRight: 1}]}>{status}</Text>
                 </View>
-                <UserDetailSection
+                <UserDetail
                     name={name}
                     price={price}
                     depositePrice={depositePrice}
