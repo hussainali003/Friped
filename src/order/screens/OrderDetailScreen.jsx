@@ -28,7 +28,7 @@ const OrderDetailScreen = ({item}) => {
     const dressImage = item?.dressImage || WeddingMermaidRegularPng;
 
     const handleNavigateToPayment = () => {
-        navigation.navigate('HomeTab', {screen: 'Payment'});
+        navigation.navigate('HomeTab', {screen: 'OrderPayment'});
     };
 
     return (

@@ -3,8 +3,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Header } from '../../common';
 
-import * as colors from '../../config/colors';
 import OrderList from '../components/orderList';
+
+import * as colors from '../../config/colors';
 
 const OrderScreen = () => {
     const insets = useSafeAreaInsets();
