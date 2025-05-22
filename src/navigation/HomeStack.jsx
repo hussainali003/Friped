@@ -5,6 +5,7 @@ import OrderPaymentScreen from '../order/screens/OrderPaymentScreen';
 import DressBookScreen from '../dresses/screen/DressBookScreen';
 import OrderDetailScreen from '../order/screens/OrderDetailScreen';
 import DressDetailScreen from '../dresses/screen/DressDetailScreen';
+import OrderTrackScreen from '../order/screens/OrderTrackScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const HomeStack = () => (
       <Stack.Screen name="DressDetail" component={DressDetailScreen} />
       <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
       <Stack.Screen name="OrderPayment" component={OrderPaymentScreen} />
+      <Stack.Screen name="OrderTrack" component={OrderTrackScreen} />
   </Stack.Navigator>
 );
 
