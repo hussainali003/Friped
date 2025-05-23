@@ -8,11 +8,12 @@ import OrderPaymentScreen from '../order/screens/OrderPaymentScreen';
 import OrderDetailScreen from '../order/screens/OrderDetailScreen';
 import OrderTrackScreen from '../order/screens/OrderTrackScreen';
 
+import FaqScreen from '../setting/screens/FaqScreen';
 import SettingScreen from '../setting/screens/SettingScreen';
 import EditProfileScreen from '../profile/screens/EditProfileScreen';
+import RulesAndTermsScreen from '../setting/screens/RulesAndTermsScreen';
 import TransactionScreen from '../transactions/screens/TransactionsScreen';
 import LocationOptionsScreen from '../location/screens/LocationOptionsScreen';
-import RulesAndTermsScreen from '../setting/screens/RulesAndTermsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ const HomeStack = () => (
       <Stack.Screen name="OrderPayment" component={OrderPaymentScreen} />
       <Stack.Screen name="Setting" component={SettingScreen} />
       <Stack.Screen name="RulesAndTerms" component={RulesAndTermsScreen} />
+      <Stack.Screen name="Faq" component={FaqScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="Transactions" component={TransactionScreen} />
       <Stack.Screen name="LocationOptions" component={LocationOptionsScreen} />
