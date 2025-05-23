@@ -24,7 +24,7 @@ const profileOptions = [
         icon: StarLightSvg,
     },
     {
-        title: 'Transaction',
+        title: 'Transactions',
         icon: PaperLightSvg,
     },
     {
