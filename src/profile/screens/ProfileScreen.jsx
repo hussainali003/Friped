@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Header } from '../../common';
 
 import EditProfileImage from '../sections/ProfileMediaSection';
-import ProfileOption from '../components/Profile/ProfileOption';
+import ProfileOptionItem from '../components/Profile/ProfileOptionItem';
 
 import PinGreySvg from '../../assets/images/pin_grey.svg';
 import QuestionSvg from '../../assets/images/question.svg';
@@ -16,7 +16,7 @@ import * as colors from '../../config/colors';
 
 const profileOptions = [
     {
-        title: 'Address',
+        title: 'LocationOptions',
         icon: PinGreySvg,
     },
     {
@@ -46,7 +46,7 @@ const ProfileScreen = () => {
                 <EditProfileImage />
                 <View style={styles.contentContainer}>
                     {profileOptions.map((item, index) => (
-                        <ProfileOption key={index} title={item.title} left={<item.icon />}/>
+                        <ProfileOptionItem key={index} title={item.title} left={<item.icon />}/>
                     ))}
                 </View>
             </ScrollView>
