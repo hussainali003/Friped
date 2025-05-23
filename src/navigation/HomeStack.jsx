@@ -8,6 +8,7 @@ import OrderPaymentScreen from '../order/screens/OrderPaymentScreen';
 import OrderDetailScreen from '../order/screens/OrderDetailScreen';
 import OrderTrackScreen from '../order/screens/OrderTrackScreen';
 
+import SettingScreen from '../setting/screens/SettingScreen';
 import EditProfileScreen from '../profile/screens/EditProfileScreen';
 import TransactionScreen from '../transactions/screens/TransactionsScreen';
 import LocationOptionsScreen from '../location/screens/LocationOptionsScreen';
@@ -22,6 +23,7 @@ const HomeStack = () => (
       <Stack.Screen name="OrderTrack" component={OrderTrackScreen} />
       <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
       <Stack.Screen name="OrderPayment" component={OrderPaymentScreen} />
+      <Stack.Screen name="Setting" component={SettingScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="Transactions" component={TransactionScreen} />
       <Stack.Screen name="LocationOptions" component={LocationOptionsScreen} />
