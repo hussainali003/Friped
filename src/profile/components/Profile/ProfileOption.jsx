@@ -1,5 +1,5 @@
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
 import ChevronRightSvg from '../../../assets/images/chevron_right.svg';
 
@@ -29,7 +29,6 @@ const ProfileOption = ({left, title}) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 16,
         marginBottom: 8,
     },
     selector: {

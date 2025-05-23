@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import CoverPhotoSvg from '../../assets/images/cover_photo.svg';
@@ -8,6 +9,12 @@ import ChevronRightSvg from '../../assets/images/chevron_right.svg';
 import * as colors from '../../config/colors';
 
 const ProfileMediaSection = () => {
+    const navigation = useNavigation();
+
+    const handleNavigateToEditProfile = () => {
+        navigation.navigate('HomeTab', {screen: 'EditProfile'});
+    };
+
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.editBackgroundContainer}>
@@ -25,9 +32,9 @@ const ProfileMediaSection = () => {
                             <Text style={styles.text}>Switch as seller</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.chevronContainer}>
+                    <TouchableOpacity onPress={handleNavigateToEditProfile} style={styles.chevronContainer}>
                         <ChevronRightSvg />
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

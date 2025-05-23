@@ -42,11 +42,13 @@ const ProfileScreen = () => {
     return (
         <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title="Profile" />
-            <EditProfileImage />
-            <ScrollView contentContainerStyle={styles.scrollContentContainer} style={styles.scrollContainer}>
-                {profileOptions.map((item, index) => (
-                    <ProfileOption key={index} title={item.title} left={<item.icon />}/>
-                ))}
+            <ScrollView style={styles.scrollContainer}>
+                <EditProfileImage />
+                <View style={styles.contentContainer}>
+                    {profileOptions.map((item, index) => (
+                        <ProfileOption key={index} title={item.title} left={<item.icon />}/>
+                    ))}
+                </View>
             </ScrollView>
         </View>
     );
@@ -61,8 +63,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background_one,
     },
-    scrollContentContainer: {
-        paddingTop: 80,
+    contentContainer: {
+        marginTop: 80,
+        marginBottom: 30,
+        marginHorizontal: 16,
     },
 });
 
