@@ -3,10 +3,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DeliveryInfoSection, Header } from '../../common';
 
-import SellerSection from '../section/dressDetail/SellerSection';
 import DressCategorylList from '../components/dressCategorylList';
-import CarouselSection from '../section/dressDetail/CarouselSection';
-import DescriptionSection from '../section/dressDetail/DescriptionSection';
+
+import SellerSection from '../sections/dressDetail/SellerSection';
+import CarouselSection from '../sections/dressDetail/CarouselSection';
+import DescriptionSection from '../sections/dressDetail/DescriptionSection';
 
 import data from '../../static/DressDetail';
 

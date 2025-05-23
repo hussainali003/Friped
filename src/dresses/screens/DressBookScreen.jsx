@@ -4,10 +4,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DeliveryInfoSection, Header } from '../../common';
 
-import ModalSection from '../section/dressBook/ModalSection';
-import DetailSection from '../section/dressBook/DetailSection';
+import ModalSection from '../sections/dressBook/ModalSection';
+import DetailSection from '../sections/dressBook/DetailSection';
+import MeasurementSection from '../sections/dressBook/MeasurementSection';
+
 import DressCategorylList from '../components/dressCategorylList';
-import MeasurementSection from '../section/dressBook/MeasurementSection';
 
 import data from '../../static/DressDetail';
 

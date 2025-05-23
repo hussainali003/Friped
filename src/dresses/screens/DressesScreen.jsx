@@ -3,8 +3,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DeliveryInfoSection, Header} from '../../common';
 
-import FilterSection from '../section/FilterSection';
-import DressesListSection from '../section/DressesListSection';
+import FilterSection from '../sections/FilterSection';
+import DressesListSection from '../sections/DressesListSection';
 
 import data from '../../static/Dresses';
 
@@ -27,16 +27,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background_two,
-    },
-    flatList: {
-        backgroundColor: colors.white,
-    },
-    scrollContainer: {
-        flex: 1,
-        backgroundColor: colors.background_one,
-    },
-    contentContainer: {
-        paddingBottom: 20,
     },
 });
 

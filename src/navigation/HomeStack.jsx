@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import DressesScreen from '../dresses/screen/DressesScreen';
+import DressesScreen from '../dresses/screens/DressesScreen';
+import DressBookScreen from '../dresses/screens/DressBookScreen';
+import DressDetailScreen from '../dresses/screens/DressDetailScreen';
+
 import OrderPaymentScreen from '../order/screens/OrderPaymentScreen';
-import DressBookScreen from '../dresses/screen/DressBookScreen';
 import OrderDetailScreen from '../order/screens/OrderDetailScreen';
-import DressDetailScreen from '../dresses/screen/DressDetailScreen';
 import OrderTrackScreen from '../order/screens/OrderTrackScreen';
+
 import EditProfileScreen from '../profile/screens/EditProfileScreen';
 
 const Stack = createNativeStackNavigator();
@@ -15,10 +17,10 @@ const HomeStack = () => (
       <Stack.Screen name="Dresses" component={DressesScreen} />
       <Stack.Screen name="DressBook" component={DressBookScreen} />
       <Stack.Screen name="DressDetail" component={DressDetailScreen} />
-      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="OrderTrack" component={OrderTrackScreen} />
       <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
       <Stack.Screen name="OrderPayment" component={OrderPaymentScreen} />
+      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
   </Stack.Navigator>
 );
 
