@@ -9,7 +9,7 @@ import BellPinLightSvg from '../assets/images/bell_pin_light.svg';
 const Header = ({title, mb, style}) => {
     const navigation = useNavigation();
 
-    const handleNavigate = () => {
+    const handleNavigateToBack = () => {
         if (navigation.canGoBack()) {
             navigation.goBack();
         } else {
@@ -17,9 +17,13 @@ const Header = ({title, mb, style}) => {
         }
     };
 
+    const handleNavigateToInbox = () => {
+        navigation.navigate('HomeTab', { screen: 'Inbox'});
+    };
+
     return (
         <View style={[styles.container, {marginBottom: mb}, style]}>
-            <TouchableOpacity onPress={handleNavigate} style={styles.leftButton}>
+            <TouchableOpacity onPress={handleNavigateToBack} style={styles.leftButton}>
                 <ArrowLeftSvg />
             </TouchableOpacity>
             <Text style={styles.text}>{title}</Text>
@@ -27,7 +31,7 @@ const Header = ({title, mb, style}) => {
                 <TouchableOpacity style={styles.rightButton}>
                     <SearchAltLightSvg />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.rightButton}>
+                <TouchableOpacity onPress={handleNavigateToInbox} style={styles.rightButton}>
                     <MeassageLightSvg />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.rightButton}>
