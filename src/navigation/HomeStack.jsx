@@ -12,6 +12,7 @@ import SettingScreen from '../setting/screens/SettingScreen';
 import EditProfileScreen from '../profile/screens/EditProfileScreen';
 import TransactionScreen from '../transactions/screens/TransactionsScreen';
 import LocationOptionsScreen from '../location/screens/LocationOptionsScreen';
+import RulesAndTermsScreen from '../setting/screens/RulesAndTermsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ const HomeStack = () => (
       <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
       <Stack.Screen name="OrderPayment" component={OrderPaymentScreen} />
       <Stack.Screen name="Setting" component={SettingScreen} />
+      <Stack.Screen name="RulesAndTerms" component={RulesAndTermsScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="Transactions" component={TransactionScreen} />
       <Stack.Screen name="LocationOptions" component={LocationOptionsScreen} />
