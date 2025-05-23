@@ -2,9 +2,10 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Header } from '../../common';
-import OrderTrackSection from '../section/orderTrack/OrderTrackSection';
-import OrderDetailSection from '../section/orderTrack/OrderDetailSection';
-import OrderCategorylList from '../section/orderTrack/orderCategorylList';
+
+import OrderTrackSection from '../sections/orderTrack/OrderTrackSection';
+import OrderDetailSection from '../sections/orderTrack/OrderDetailSection';
+import OrderCategorylList from '../sections/orderTrack/orderCategorylList';
 
 import data from '../../static/DressDetail';
 

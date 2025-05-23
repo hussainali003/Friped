@@ -4,11 +4,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Header } from '../../common';
 
-import PaymentMethodSection from '../section/orderPayment/PaymentMethodSection';
-import OtherPaymentSection from '../section/orderPayment/OtherPaymentSection';
-import DeliveryOptionSection from '../section/orderPayment/DeliveryOptionSection';
-import PriceDetailSection from '../section/orderPayment/PriceDetailSection';
-import PaymentCompleteModal from '../section/orderPayment/PaymentCompleteModal';
+import PriceDetailSection from '../sections/orderPayment/PriceDetailSection';
+import OtherPaymentSection from '../sections/orderPayment/OtherPaymentSection';
+import PaymentCompleteModal from '../sections/orderPayment/PaymentCompleteModal';
+import PaymentMethodSection from '../sections/orderPayment/PaymentMethodSection';
+import DeliveryOptionSection from '../sections/orderPayment/DeliveryOptionSection';
 
 import * as colors from '../../config/colors';
 
