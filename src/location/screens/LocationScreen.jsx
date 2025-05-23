@@ -1,14 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import { StyleSheet, Text,  View } from 'react-native';
+import MapView from 'react-native-maps';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-// import components from common
-import { Button } from '../../common';
+import { Button, StackHeader } from '../../common';
 
-// import images from assets
-import PersonStandingSvg from '../../assets/images/person_standing.svg';
+import SearchAltSvg from '../../assets/images/search_alt.svg';
+import PinLightSvg from '../../assets/images/pin_light.svg';
 
-// import colors from config
 import * as colors from '../../config/colors';
 
 const LocationScreen = () => {
@@ -16,14 +15,32 @@ const LocationScreen = () => {
 
     return (
         <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
-            <View style={styles.personStandingContainer}>
-                <PersonStandingSvg />
+            <StackHeader title="Provide your location" />
+            <View style={styles.mapContainer}>
+                <View style={styles.inputContainer}>
+                    <SearchAltSvg />
+                    <TextInput placeholder="Search for area, street name" placeholderTextColor={colors.text_dim} style={styles.input}/>
+                </View>
+                <MapView
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                     />
+                <View style={styles.footer}>
+                    <View style={{marginBottom: 20, marginHorizontal: 16}}>
+                        <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', columnGap: 6}}>
+                            <PinLightSvg />
+                            <Text style={{fontSize: 20, fontFamily: 'Lato-Bold'}}>6 Rue de l'Avenir, 92360 Meudon</Text>
+                        </View>
+                        <Text style={{marginLeft: 30}}>Meudon</Text>
+                    </View>
+                    <Button title="Confirm location" />
+                </View>
             </View>
-            <Text style={{marginBottom: 10,textAlign: 'center',fontFamily: 'Lato-Bold',fontSize: 20}}>We don’t have your location, yet !</Text>
-            <Text style={{marginBottom: 36, textAlign: 'center', fontFamily: 'Lato-Regular', fontSize: 14, color: colors.text_dim}}>Set your location to begin shopping nearby.</Text>
-            <Button title="Send OTP" mb={10} />
-            <Button type="secondary" title="Add manually" mb={126} />
-            <Text style={styles.footerText}>We only access your location while your using the app to improve your experience.</Text>
         </View>
     );
 };
@@ -33,19 +50,42 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background_two,
     },
-    personStandingContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: 30,
-        marginBottom: 69,
+    mapContainer: {
+        flex: 1,
     },
-    footerText: {
+    map: {
+        flex: 1,
+        position: 'relative',
+    },
+    inputContainer: {
+        position: 'absolute',
+        top: 0,
+        zIndex: 3,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        columnGap: 8,
+        paddingHorizontal: 16,
+        marginTop: 16,
         marginHorizontal: 16,
-        marginBottom: 34,
-        textAlign: 'center',
-        fontFamily: 'Lato-Light',
-        color: colors.text_dim,
+        borderWidth: 1,
+        borderRadius: 6,
+        borderColor: '#E1E1E1',
+        backgroundColor: colors.white,
+    },
+    input: {
+        flex: 1,
+        backgroundColor: colors.white,
+    },
+    footer: {
+        width: '100%',
+        position: 'absolute',
+        bottom: 0,
+        paddingTop: 12,
+        paddingBottom: 52,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        backgroundColor: colors.white,
     },
 });
 
