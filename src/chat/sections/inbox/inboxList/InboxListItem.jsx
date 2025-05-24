@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import ChevronRightSvg from '../../../../assets/images/chevron_right.svg';
@@ -5,12 +6,17 @@ import ChevronRightSvg from '../../../../assets/images/chevron_right.svg';
 import * as colors from '../../../../config/colors';
 
 const InboxListItem = ({item}) => {
+    const navigation = useNavigation();
     const image = item?.image || '';
     const name = item?.name || 'Venz';
     const lastOnline = item?.lastOnline || 'Last seen yesterday';
 
+    const handleNavigateToChat = () => {
+        navigation.navigate('Chat');
+    };
+
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity onPress={handleNavigateToChat} style={styles.container}>
             <View style={styles.imageContainer}>
                 <Image source={image} />
             </View>
@@ -54,11 +60,9 @@ const styles = StyleSheet.create({
         color: '#ADB5BD',
     },
     text_heading: {
-        text: {
         fontSize: 14,
         fontFamily: 'Lato-Bold',
         color: '##0F1828',
-    },
     },
 });
 
