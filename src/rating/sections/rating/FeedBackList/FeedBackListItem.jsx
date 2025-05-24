@@ -1,10 +1,12 @@
-import {Text,  View, StyleSheet, Image} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import {Text,  View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import InboxMenPng from '../../../../assets/images_png/inbox_men.png';
 
 import * as colors from '../../../../config/colors';
 
 const FeedBackListItem = ({item, index, totalIndex}) => {
+    const navigation = useNavigation();
     const name = item?.name || 'Venz';
     const image = item?.image || InboxMenPng;
     const description = item?.description || 'Worth the price...rented it for $29.. satisfied with the product.. has plastic backside which makes its friendly for dishwashing ... overall good!';
@@ -14,10 +16,15 @@ const FeedBackListItem = ({item, index, totalIndex}) => {
         paddingBottom: 0,
     };
 
-    console.log(index, totalIndex);
+    const handleNavigateToExchangeRating = () => {
+        navigation.navigate('ExchangeRating');
+    };
 
     return (
-        <View style={[styles.container, index === totalIndex && removeBorderAndPadding]}>
+        <TouchableOpacity
+            onPress={handleNavigateToExchangeRating}
+            style={[styles.container, index === totalIndex && removeBorderAndPadding]}
+        >
             <View style={styles.imageContainer}>
                 <Image source={image} style={styles.image} />
             </View>
@@ -25,7 +32,7 @@ const FeedBackListItem = ({item, index, totalIndex}) => {
                 <Text style={styles.text_heading}>{name}</Text>
                 <Text style={styles.text}>{description}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 
