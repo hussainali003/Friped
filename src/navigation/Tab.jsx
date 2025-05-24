@@ -3,6 +3,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import HomeLightSvg from '../assets/images/home_light.svg';
 import HomePinkSvg from '../assets/images/home_pink.svg';
+import HeartLightSvg from '../assets/images/heart_light.svg';
+import HeartPinkSvg from '../assets/images/heart_pink.svg';
 import WidgetLightSvg from '../assets/images/widget_light.svg';
 import WidgetPinkSvg from '../assets/images/widget_pink.svg';
 import UserLightSvg from '../assets/images/user_alt_light.svg';
@@ -50,7 +52,10 @@ const  Tab = ({ state, navigation }) => {
             {label === 'Order' && (
               isFocused ? <BasketPinkSvg /> : <BasketLightSvg />
             )}
-            <Text style={[styles.buttonText, { color: isFocused ? colors.dashLine : colors.text_primary }]}>
+            {label === 'Favourites' && (
+              isFocused ? <HeartPinkSvg /> : <HeartLightSvg />
+            )}
+            <Text style={[styles.text, { color: isFocused ? colors.dashLine : colors.text_primary }]}>
               {label}
             </Text>
           </TouchableOpacity>
@@ -78,10 +83,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     rowGap: 4,
     paddingVertical: 8,
-    paddingHorizontal: 18,
-
   },
-  buttonText: {
+  text: {
     fontSize: 12,
     fontFamily: 'Lato-Regular',
   },

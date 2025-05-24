@@ -4,6 +4,7 @@ import HomeScreen from '../home/screens/HomeScreen';
 import OrderScreen from '../order/screens/OrderScreen';
 import ProfileScreen from '../profile/screens/ProfileScreen';
 import CategoryScreen from '../category/screens/CategoryScreen';
+import FavouritesScreen from '../favourites/screens/FavouritesScreen';
 
 import HomeStack from './HomeStack';
 
@@ -18,6 +19,7 @@ const BottomTab = () => {
     screenOptions={{headerShown: false}}
     >
       <Tab.Screen name="Order" component={OrderScreen} />
+      <Tab.Screen name="Favourites" component={FavouritesScreen} />
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="HomeTab" component={HomeStack} />
       <Tab.Screen name="Category" component={CategoryScreen} />
