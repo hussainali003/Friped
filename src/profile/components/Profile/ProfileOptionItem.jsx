@@ -7,7 +7,11 @@ const ProfileOptionItem = ({left, title}) => {
     const navigation = useNavigation();
 
     const handleNavigate = (location) => {
-        navigation.navigate('HomeTab', {screen: location});
+        if (location === 'Rating') {
+            navigation.navigate('Rating');
+        } else {
+            navigation.navigate('HomeTab', {screen: location});
+        }
     };
 
     return (

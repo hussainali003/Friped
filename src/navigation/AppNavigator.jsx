@@ -6,6 +6,7 @@ import BottomTab from './BottomTab';
 import ChatScreen from '../chat/screens/ChatScreen';
 import LoginScreen from '../auth/screens/LoginScreen';
 import VerifyScreen from '../auth/screens/VerifyScreen';
+import RatingScreen from '../rating/screens/RatingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const AppNavigator = () => {
                 <>
                     <Stack.Screen name="BottomTab" component={BottomTab} />
                     <Stack.Screen name="Chat" component={ChatScreen} />
+                    <Stack.Screen name="Rating" component={RatingScreen} />
                 </>
             ) : (
                 <>
