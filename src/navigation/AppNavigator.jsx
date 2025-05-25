@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// buyer screens
 import BottomTab from './BottomTab';
-
 import ChatScreen from '../chat/screens/ChatScreen';
 import LoginScreen from '../auth/screens/LoginScreen';
 import VerifyScreen from '../auth/screens/VerifyScreen';
@@ -10,21 +10,31 @@ import RatingScreen from '../rating/screens/RatingScreen';
 import GiveRatingScreen from '../rating/screens/GiveRatingScreen';
 import ExchangeRatingScreen from '../rating/screens/ExchangeRatingScreen';
 
+// seller screens
+import DashboardScreen from '../seller/dashboard/screens/DashboardScreen';
+
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
     const isLogin = true;
+    const isSeller = true;
 
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false, animation: 'fade'}}>
             {isLogin ? (
                 <>
-                    <Stack.Screen name="BottomTab" component={BottomTab} />
-                    <Stack.Screen name="Chat" component={ChatScreen} />
-                    <Stack.Screen name="Rating" component={RatingScreen} />
-                    <Stack.Screen name="GiveRating" component={GiveRatingScreen} />
-                    <Stack.Screen name="ExchangeRating" component={ExchangeRatingScreen} />
+                    {isSeller ? (
+                        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+                    ) : (
+                        <>
+                            <Stack.Screen name="BottomTab" component={BottomTab} />
+                            <Stack.Screen name="Chat" component={ChatScreen} />
+                            <Stack.Screen name="Rating" component={RatingScreen} />
+                            <Stack.Screen name="GiveRating" component={GiveRatingScreen} />
+                            <Stack.Screen name="ExchangeRating" component={ExchangeRatingScreen} />
+                        </>
+                    )}
                 </>
             ) : (
                 <>
