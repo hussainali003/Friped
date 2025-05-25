@@ -13,6 +13,7 @@ import ExchangeRatingScreen from '../rating/screens/ExchangeRatingScreen';
 // seller screens
 import DashboardScreen from '../seller/dashboard/screens/DashboardScreen';
 import ProductsScreen from '../seller/products/screens/ProductsScreen';
+import AddNewProductScreen from '../seller/addNewProduct/screens/AddNewProductScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const AppNavigator = () => {
                 <>
                     {isSeller ? (
                         <>
+                            <Stack.Screen name="AddNewProduct" component={AddNewProductScreen} />
                             <Stack.Screen name="Products" component={ProductsScreen} />
                             <Stack.Screen name="Dashboard" component={DashboardScreen} />
 
