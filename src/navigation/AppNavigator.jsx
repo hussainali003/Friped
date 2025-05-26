@@ -11,8 +11,9 @@ import GiveRatingScreen from '../rating/screens/GiveRatingScreen';
 import ExchangeRatingScreen from '../rating/screens/ExchangeRatingScreen';
 
 // seller screens
-import DashboardScreen from '../seller/dashboard/screens/DashboardScreen';
+import WalletScreen from '../seller/wallet/screens/WalletScreen';
 import ProductsScreen from '../seller/products/screens/ProductsScreen';
+import DashboardScreen from '../seller/dashboard/screens/DashboardScreen';
 import AddNewProductScreen from '../seller/addNewProduct/screens/AddNewProductScreen';
 import NotificationsScreen from '../seller/notifications/screens/NotificationsScreen';
 
@@ -29,6 +30,7 @@ const AppNavigator = () => {
                 <>
                     {isSeller ? (
                         <>
+                            <Stack.Screen name="Wallet" component={WalletScreen} />
                             <Stack.Screen name="Notifications" component={NotificationsScreen} />
                             <Stack.Screen name="AddNewProduct" component={AddNewProductScreen} />
                             <Stack.Screen name="Products" component={ProductsScreen} />
