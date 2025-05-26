@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import DressesScreen from '../dresses/screens/DressesScreen';
-import DressBookScreen from '../dresses/screens/DressBookScreen';
-import DressDetailScreen from '../dresses/screens/DressDetailScreen';
+import DressesScreen from '../buyer/dresses/screens/DressesScreen';
+import DressBookScreen from '../buyer/dresses/screens/DressBookScreen';
+import DressDetailScreen from '../buyer/dresses/screens/DressDetailScreen';
 
-import OrderPaymentScreen from '../order/screens/OrderPaymentScreen';
-import OrderDetailScreen from '../order/screens/OrderDetailScreen';
-import OrderTrackScreen from '../order/screens/OrderTrackScreen';
+import OrderPaymentScreen from '../buyer/dressOrder/screens/DressOrderPaymentScreen';
+import OrderDetailScreen from '../buyer/dressOrder/screens/DressOrderDetailScreen';
+import OrderTrackScreen from '../buyer/dressOrder/screens/DressOrderTrackScreen';
 
 import FaqScreen from '../setting/screens/FaqScreen';
 import InboxScreen from '../chat/screens/InboxScreen';
