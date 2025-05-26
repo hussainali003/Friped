@@ -3,9 +3,9 @@ import { FlatList, StyleSheet } from 'react-native';
 import NotificationsListItem from './NotificationsListItem';
 import NotificationsListEmpty from './NotificationsListEmpty';
 
-import data from '../../../../static/Notifications';
+import data from '../../../static/Notifications';
 
-import * as colors from '../../../../config/colors';
+import * as colors from '../../../config/colors';
 
 const NotificationsList = () => {
     return (

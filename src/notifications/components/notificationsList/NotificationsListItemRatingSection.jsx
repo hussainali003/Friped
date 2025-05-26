@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import * as colors from '../../../../config/colors';
+import * as colors from '../../../config/colors';
 
 const TransactionsListItemRatingSection = ({item}) => {
     const name = item?.name || 'Mermaid wedding dress';

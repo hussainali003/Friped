@@ -4,7 +4,7 @@ import NotificationsListItemTitle from './NotificationsListItemTitle';
 import NotificationsListItemFooter from './NotificationsListItemFooter';
 import NotificationsListItemRatingSection from './NotificationsListItemRatingSection';
 
-import * as colors from '../../../../config/colors';
+import * as colors from '../../../config/colors';
 
 const NotificationsListItem = () => {
 

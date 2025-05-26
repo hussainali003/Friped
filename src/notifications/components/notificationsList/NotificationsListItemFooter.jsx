@@ -1,10 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import CalenderLightSvg from '../../../../assets/images/calendar_light.svg';
+import CalenderLightSvg from '../../../assets/images/calendar_light.svg';
 
-import WeddingMermaidMediumPng from '../../../../assets/images_png/wedding_mermaid_medium.png';
+import WeddingMermaidMediumPng from '../../../assets/images_png/wedding_mermaid_medium.png';
 
-import * as colors from '../../../../config/colors';
+import * as colors from '../../../config/colors';
 
 const NotificationsListItemFooter = ({item}) => {
     const createdAt = item?.createdAt

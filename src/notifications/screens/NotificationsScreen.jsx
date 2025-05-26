@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Header } from '../../../common';
+import { Header } from '../../common';
 
 import NotificationsList from '../components/notificationsList';
 
-import * as colors from '../../../config/colors';
+import * as colors from '../../config/colors';
 
 const NotificationsScreen = () => {
     const insets = useSafeAreaInsets();

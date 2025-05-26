@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import * as colors from '../../../../config/colors';
+import * as colors from '../../../config/colors';
 
 const NotificationsListEmpty = () => {
     return (
