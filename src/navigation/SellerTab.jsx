@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import UserPinkSvg from '../assets/images/user_alt_pink.svg';
 import UserLightSvg from '../assets/images/user_alt_light.svg';
 import BasketPinkSvg from '../assets/images/basket_alt_pink.svg';
-import BasketLightSvg from '../assets/images/basket_alt_light.svg';
+import SellerBasketSvg from '../assets/images/seller_basket.svg';
 import SellerCardSvg from '../assets/images/seller_card.svg';
 import SellerCardPinkSvg from '../assets/images/seller_card_pink.svg';
 import SellerWidgetSvg from '../assets/images/seller_widget.svg';
@@ -42,8 +42,8 @@ const SellerTab = ({ state, navigation }) => {
             {label === 'Profile' && (
               isFocused ? <UserPinkSvg /> : <UserLightSvg />
             )}
-            {label === 'Order' && (
-              isFocused ? <BasketPinkSvg /> : <BasketLightSvg />
+            {label === 'Orders' && (
+              isFocused ? <BasketPinkSvg /> : <SellerBasketSvg />
             )}
             {label === 'Dashboard' && (
               isFocused ? <SellerWidgetPinkSvg /> : <SellerWidgetSvg />
