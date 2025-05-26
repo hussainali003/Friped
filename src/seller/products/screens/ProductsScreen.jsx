@@ -14,7 +14,7 @@ const ProductsScreen = () => {
     const insets = useSafeAreaInsets();
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title="Products"/>
             <AddProductSection />
             <ProductList />

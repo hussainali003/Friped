@@ -15,7 +15,7 @@ const AddNewProductScreen = () => {
     const insets = useSafeAreaInsets();
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title="Add New Product"/>
             <ScrollView contentContainerStyle={styles.scrollViewContentContainer} style={styles.scrollViewContainer}>
                 <NewProductHeader />

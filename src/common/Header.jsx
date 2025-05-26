@@ -6,19 +6,29 @@ import SearchAltLightSvg from '../assets/images/search_alt_light.svg';
 import MeassageLightSvg from '../assets/images/message_light.svg';
 import BellPinLightSvg from '../assets/images/bell_pin_light.svg';
 
-const Header = ({title, mb, style}) => {
+const Header = ({user = 'seller', title, mb, style}) => {
     const navigation = useNavigation();
 
     const handleNavigateToBack = () => {
         if (navigation.canGoBack()) {
             navigation.goBack();
-        } else {
+        } else if (user === 'seller') {
+            navigation.navigate('Dashboard');
+        } else if (user === 'buyer') {
             navigation.navigate('Home');
         }
     };
 
     const handleNavigateToInbox = () => {
-        navigation.navigate('HomeTab', { screen: 'Inbox'});
+        if (user === 'buyer') {
+            navigation.navigate('HomeTab', { screen: 'Inbox'});
+        } else if (user === 'seller') {
+            navigation.navigate('DashboardTab', { screen: 'Inbox'});
+        }
+    };
+
+    const handleNavigateToNotifications = () => {
+        navigation.navigate('Notifications');
     };
 
     return (
@@ -34,7 +44,7 @@ const Header = ({title, mb, style}) => {
                 <TouchableOpacity onPress={handleNavigateToInbox} style={styles.rightButton}>
                     <MeassageLightSvg />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.rightButton}>
+                <TouchableOpacity onPress={handleNavigateToNotifications} style={styles.rightButton}>
                     <BellPinLightSvg />
                 </TouchableOpacity>
             </View>

@@ -1,19 +1,19 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import HomeStack from './HomeStack';
+
 import ProfileScreen from '../profile/screens/ProfileScreen';
 
 import HomeScreen from '../buyer/home/screens/HomeScreen';
 import CategoryScreen from '../buyer/category/screens/CategoryScreen';
-import DressesOrderScreen from '../buyer/dressOrder/screens/DressesOrderScreen';
 import FavouritesScreen from '../buyer/favourites/screens/FavouritesScreen';
+import DressesOrderScreen from '../buyer/dressOrder/screens/DressesOrderScreen';
 
-import HomeStack from './HomeStack';
-
-import TabBar from './Tab';
+import TabBar from './BuyerTab';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTab = () => {
+const BuyerBottomTab = () => {
   return (
     <Tab.Navigator
     tabBar={renderTabBar}
@@ -31,4 +31,4 @@ const BottomTab = () => {
 
 const renderTabBar = (props) => <TabBar {...props} />;
 
-export default BottomTab;
+export default BuyerBottomTab;

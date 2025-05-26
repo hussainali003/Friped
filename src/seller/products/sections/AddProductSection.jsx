@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import ProductBasketSvg from '../../../assets/images/product_basket.svg';
 import AddSquareSvg from '../../../assets/images/add_square.svg';
@@ -6,14 +7,22 @@ import AddSquareSvg from '../../../assets/images/add_square.svg';
 import * as colors from '../../../config/colors';
 
 const AddProductSection = ({item}) => {
+    const navigation = useNavigation();
     const products = item?.products || 10;
+
+    const handleNavigateToAddNewProduct = () => {
+        navigation.navigate('DashboardTab', {screen: 'AddNewProduct'});
+    };
 
     return (
         <View style={styles.container}>
-            <View style={[styles.contentContainer, styles.contentContainer_one]}>
+            <TouchableOpacity
+                onPress={handleNavigateToAddNewProduct}
+                style={[styles.contentContainer, styles.contentContainer_one]}
+            >
                 <AddSquareSvg />
                 <Text>Add new Product</Text>
-            </View>
+            </TouchableOpacity>
             <View style={[styles.contentContainer, styles.contentContainer_two]}>
                 <ProductBasketSvg />
                 <Text style={styles.contentContainerText_one}>Total Products</Text>

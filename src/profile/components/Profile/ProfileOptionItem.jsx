@@ -3,14 +3,16 @@ import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
 import ChevronRightSvg from '../../../assets/images/chevron_right.svg';
 
-const ProfileOptionItem = ({left, title}) => {
+const ProfileOptionItem = ({user = 'seller', left, title}) => {
     const navigation = useNavigation();
 
     const handleNavigate = (location) => {
         if (location === 'Rating') {
             navigation.navigate('Rating');
-        } else {
+        } else if (user === 'buyer') {
             navigation.navigate('HomeTab', {screen: location});
+        } else if (user === 'seller') {
+            navigation.navigate('DashboardTab', {screen: location});
         }
     };
 

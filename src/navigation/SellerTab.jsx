@@ -1,27 +1,26 @@
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import HomeLightSvg from '../assets/images/home_light.svg';
-import HomePinkSvg from '../assets/images/home_pink.svg';
-import HeartLightSvg from '../assets/images/heart_light.svg';
-import HeartPinkSvg from '../assets/images/heart_pink.svg';
-import WidgetLightSvg from '../assets/images/widget_light.svg';
-import WidgetPinkSvg from '../assets/images/widget_pink.svg';
-import UserLightSvg from '../assets/images/user_alt_light.svg';
 import UserPinkSvg from '../assets/images/user_alt_pink.svg';
-import BasketLightSvg from '../assets/images/basket_alt_light.svg';
+import UserLightSvg from '../assets/images/user_alt_light.svg';
 import BasketPinkSvg from '../assets/images/basket_alt_pink.svg';
-
+import BasketLightSvg from '../assets/images/basket_alt_light.svg';
+import SellerCardSvg from '../assets/images/seller_card.svg';
+import SellerCardPinkSvg from '../assets/images/seller_card_pink.svg';
+import SellerWidgetSvg from '../assets/images/seller_widget.svg';
+import SellerWidgetPinkSvg from '../assets/images/seller_widget_pink.svg';
+import SellerShopSvg from '../assets/images/seller_shop.svg';
+import SellerShopPinkSvg from '../assets/images/seller_shop_pink.svg';
 
 import * as colors from '../config/colors';
 
-const  Tab = ({ state, navigation }) => {
+const SellerTab = ({ state, navigation }) => {
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.tabBarContainer, {paddingBottom: insets.bottom}]}>
       {state.routes.map((route, index) => {
-        const label = route.name; // simple label
+        const label = route.name;
         const isFocused = state.index === index;
 
         const onPress = () => {
@@ -30,7 +29,7 @@ const  Tab = ({ state, navigation }) => {
           }
         };
 
-        if (label === 'HomeTab') {
+        if (label === 'DashboardTab') {
           return;
         }
 
@@ -40,20 +39,20 @@ const  Tab = ({ state, navigation }) => {
             onPress={onPress}
             style={[styles.tabButton]}
           >
-            {label === 'Home' && (
-              isFocused ? <HomePinkSvg /> : <HomeLightSvg />
-            )}
             {label === 'Profile' && (
               isFocused ? <UserPinkSvg /> : <UserLightSvg />
-            )}
-            {label === 'Category' && (
-              isFocused ? <WidgetPinkSvg /> : <WidgetLightSvg />
             )}
             {label === 'Order' && (
               isFocused ? <BasketPinkSvg /> : <BasketLightSvg />
             )}
-            {label === 'Favourites' && (
-              isFocused ? <HeartPinkSvg /> : <HeartLightSvg />
+            {label === 'Dashboard' && (
+              isFocused ? <SellerWidgetPinkSvg /> : <SellerWidgetSvg />
+            )}
+            {label === 'Products' && (
+              isFocused ? <SellerShopPinkSvg /> : <SellerShopSvg />
+            )}
+            {label === 'Wallet' && (
+              isFocused ? <SellerCardPinkSvg /> : <SellerCardSvg />
             )}
             <Text style={[styles.text, { color: isFocused ? colors.dashLine : colors.text_primary }]}>
               {label}
@@ -90,5 +89,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Tab;
+export default SellerTab;
 
