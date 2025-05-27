@@ -1,10 +1,12 @@
 // import from node_modules
 import { useEffect } from 'react';
+import { Provider } from 'react-redux';
 import BootSplash from 'react-native-bootsplash';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-// import appNavigator from navigation
+import { store } from './redux/configureStore';
+
 import AppNavigator from './navigation/AppNavigator';
 
 const App = () => {
@@ -20,7 +22,9 @@ const App = () => {
   return (
     <GestureHandlerRootView>
       <SafeAreaProvider>
-        <AppNavigator />
+        <Provider store={store}>
+          <AppNavigator />
+        </Provider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
