@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, DropDown, Header, TextInput } from '../../common';
 
@@ -10,11 +11,16 @@ import * as colors from '../../config/colors';
 
 const EditProfileScreen = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
     const [selectedGender, setSelectGender] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
 
+    const handleNavigationToLocationPremission = () => {
+        navigation.navigate('LocationPremission');
+    };
+
     return (
-        <View style={[styles.container, {paddingTop: insets.top}]}>
+        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
             <Header title="Edit profile"/>
             <ScrollView style={styles.scrollContainer}>
                 <EditProfileImage />
@@ -25,7 +31,7 @@ const EditProfileScreen = () => {
                     <TextInput inputMode="email" label="Email address" placeholder="Enter here" mb={15}/>
                     <DropDown selected={selectedGender} setSelected={setSelectGender} roles={['Men', 'Women']}/>
                     <DropDown selected={selectedRole} setSelected={setSelectedRole} roles={['Single', 'Both']} />
-                    <Button title="Save" style={styles.button} />
+                    <Button onPress={handleNavigationToLocationPremission} title="Save" style={styles.button} />
                 </View>
             </ScrollView>
         </View>

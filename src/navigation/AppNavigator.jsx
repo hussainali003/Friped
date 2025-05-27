@@ -7,6 +7,8 @@ import SellerBottomTab from './SellerBottomTab';
 
 import LoginScreen from '../auth/screens/LoginScreen';
 import VerifyScreen from '../auth/screens/VerifyScreen';
+import EditProfileScreen from '../profile/screens/EditProfileScreen';
+import LocationPremissionScreen from '../location/screens/LocationPremissionScreen';
 
 import ChatScreen from '../chat/screens/ChatScreen';
 import RatingScreen from '../rating/screens/RatingScreen';
@@ -17,7 +19,7 @@ import NotificationsScreen from '../notifications/screens/NotificationsScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-    const isLogin = true;
+    const isLogin = false;
     const isSeller = true;
 
     return (
@@ -44,6 +46,8 @@ const AppNavigator = () => {
                 <>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Verify" component={VerifyScreen} />
+                    <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+                    <Stack.Screen name="LocationPremission" component={LocationPremissionScreen} />
                 </>
             )}
         </Stack.Navigator>

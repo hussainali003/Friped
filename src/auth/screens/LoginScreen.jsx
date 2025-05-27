@@ -1,54 +1,57 @@
-import { TouchableOpacity,  StyleSheet, Text, TextInput, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { TouchableOpacity,  StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 
-// import components from common
 import { Button } from '../../common';
 
-// import images from assets
 import AppNameSvg from '../../assets/images/app_name.svg';
 import GoogleSvg from '../../assets/images/google_icon.svg';
 import FranceFlagSvg from '../../assets/images/france_flag.svg';
 import ChevronDownSvg from '../../assets/images/chevron_down.svg';
 import PersonSettingSvg from '../../assets/images/person_setting.svg';
 
-
-
-// import colors from config
 import * as colors from '../../config/colors';
 
 const LoginScreen = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
+
+    const handleNavigateToVerify = () => {
+        navigation.navigate('Verify');
+    };
 
     return (
         <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
-            <View style={styles.appNameSvgContainer}>
-                <AppNameSvg />
-            </View>
-            <View style={styles.personSettingSvgContainer}>
-                <PersonSettingSvg />
-            </View>
-            <View style={styles.textContainer}>
-                <View style={styles.dashLine}/>
-                <Text style={styles.loginText}>Log in or sign up</Text>
-                <View style={styles.dashLine}/>
-            </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputContent}>
-                    <FranceFlagSvg />
-                    <Text>33</Text>
-                    <ChevronDownSvg />
+            <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
+                <View style={styles.appNameSvgContainer}>
+                    <AppNameSvg />
                 </View>
-                <TextInput inputMode="numeric" maxLength={10} placeholder="Enter phone number" placeholderTextColor={colors.text_dim} style={styles.input}/>
-            </View>
-            <Button title="Send OTP" mb={25} />
-            <View style={styles.textContainer}>
-                <View style={styles.dashLine}/>
-                <Text style={styles.orText}>OR</Text>
-                <View style={styles.dashLine}/>
-            </View>
-            <TouchableOpacity style={styles.googleSvgContainer}>
-                <GoogleSvg />
-            </TouchableOpacity>
+                <View style={styles.personSettingSvgContainer}>
+                    <PersonSettingSvg />
+                </View>
+                <View style={styles.textContainer}>
+                    <View style={styles.dashLine}/>
+                    <Text style={styles.loginText}>Log in or sign up</Text>
+                    <View style={styles.dashLine}/>
+                </View>
+                <View style={styles.inputContainer}>
+                    <View style={styles.inputContent}>
+                        <FranceFlagSvg />
+                        <Text>33</Text>
+                        <ChevronDownSvg />
+                    </View>
+                    <TextInput inputMode="numeric" maxLength={10} placeholder="Enter phone number" placeholderTextColor={colors.text_dim} style={styles.input}/>
+                </View>
+                <Button onPress={handleNavigateToVerify} title="Send OTP" mb={25} />
+                <View style={styles.textContainer}>
+                    <View style={styles.dashLine}/>
+                    <Text style={styles.orText}>OR</Text>
+                    <View style={styles.dashLine}/>
+                </View>
+                <TouchableOpacity style={styles.googleSvgContainer}>
+                    <GoogleSvg />
+                </TouchableOpacity>
+            </ScrollView>
             <Text style={styles.footerText}>By continuing you will accept the <Text style={styles.linkText}>Terms of Use</Text> and <Text style={styles.linkText}> Privacy and Policy</Text> of Cashlance.</Text>
         </View>
     );
@@ -59,11 +62,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background_two,
     },
+    scrollViewContentContainer: {
+        paddingTop: 30,
+    },
     appNameSvgContainer: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 30,
         marginBottom: 35,
     },
     personSettingSvgContainer: {
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
     },
     footerText: {
         marginTop: 'auto',
-        marginBottom: 28,
+        marginBottom: 20,
         marginHorizontal: 16,
         textAlign: 'center',
         fontFamily: 'Lato-Light',

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -7,9 +8,10 @@ import { Button, StackHeader } from '../../common';
 import * as colors from '../../config/colors';
 
 const VerifyScreen = () => {
-    const insets = useSafeAreaInsets();
-    const [otp, setOtp] = useState(new Array(5).fill(''));
     const inputs = useRef([]);
+    const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
+    const [otp, setOtp] = useState(new Array(5).fill(''));
 
     const handleInputChange = (text, index) => {
         if (text && index < 4) {
@@ -21,6 +23,10 @@ const VerifyScreen = () => {
         if (nativeEvent.key === 'Backspace' && index > 0) {
         inputs.current[index - 1].focus();
         }
+    };
+
+    const handleToNavigateToProfile = () => {
+        navigation.navigate('EditProfile');
     };
 
     return (
@@ -45,7 +51,7 @@ const VerifyScreen = () => {
                 } )}
             </View>
             <Text style={[styles.text, styles.text_three]}>Resend OTP in 25 sec</Text>
-            <Button title="Verify Now" />
+            <Button onPress={handleToNavigateToProfile} title="Verify Now" />
         </View>
     );
 };
