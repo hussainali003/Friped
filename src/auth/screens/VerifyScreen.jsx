@@ -1,102 +1,103 @@
-import { useRef, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { useContext, useRef, useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button, StackHeader } from '../../common';
+import VerifyTextInput from '../components/login/VerifyTextInput';
+
+import { Button, StackHeader, Text, View } from '../../common';
+
+import { AuthContext } from '../../config/context';
 
 import * as colors from '../../config/colors';
+import { ScrollView } from 'react-native';
 
 const VerifyScreen = () => {
+    const route = useRoute();
     const inputs = useRef([]);
     const insets = useSafeAreaInsets();
-    const navigation = useNavigation();
-    const [otp, setOtp] = useState(new Array(5).fill(''));
+    const [errorMessage, setErrorMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [otp, setOtp] = useState(new Array(6).fill(''));
 
-    const handleInputChange = (text, index) => {
-        if (text && index < 4) {
+    const { verifyCode } = useContext(AuthContext);
+
+    const phoneNumber = route?.params?.phoneNumber;
+
+    const handleInputChange = (e, index) => {
+        console.log('value', e, 'index', index);
+        setOtp(prev => prev.map((item, i) => {
+            if (i === index) {
+                return e;
+            }
+            return item;
+        }));
+        if (e && index < otp.length - 1) {
             inputs.current[index + 1].focus();
         }
+        setErrorMessage('');
     };
 
     const handleKeyPress = ({ nativeEvent }, index) => {
         if (nativeEvent.key === 'Backspace' && index > 0) {
-        inputs.current[index - 1].focus();
+            if (otp[index] === '') {
+                inputs.current[index - 1].focus();
+            }
+        } else {
+            if (otp[index] !== '' && index < otp.length - 1 && index !== 0) {
+                inputs.current[index + 1].focus();
+            }
         }
     };
 
-    const handleToNavigateToProfile = () => {
-        navigation.navigate('EditProfile');
+    const handleSubmit = async () => {
+        setLoading(true);
+        const code = otp.join('');
+
+        try {
+            await verifyCode(code);
+        } catch (err) {
+            setErrorMessage(err.message);
+        }
+        setLoading(false);
     };
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View flex={1} backgroundColor={colors.background_two} style={{paddingTop: insets.top, paddingBottom: insets.bottom}}>
             <StackHeader title="Verify OTP" mb={25}/>
-            <Text style={[styles.text, styles.text_one]}>Enter OTP sent on  +91  9896787494</Text>
-            <Text style={[styles.text, styles.text_two]}>Enter OTP</Text>
-            <View style={styles.inputContainer}>
-                {otp.map((i,index) => {
-                    return (
-                        <TextInput
-                            key={index}
-                            inputMode="numeric"
-                            cursorColor={colors.text_dim}
-                            maxLength={1}
-                            onChangeText={(text) => handleInputChange(text, index)}
-                            onKeyPress={(e) => handleKeyPress(e, index)}
-                            ref={(ref) => (inputs.current[index] = ref)}
-                            style={styles.input}
-                        />
-                    );
-                } )}
-            </View>
-            <Text style={[styles.text, styles.text_three]}>Resend OTP in 25 sec</Text>
-            <Button onPress={handleToNavigateToProfile} title="Verify Now" />
+            <ScrollView>
+                <Text size={16} mb={16} mh={16}>Enter OTP sent on {phoneNumber}</Text>
+                <Text size={14} mh={16} color={'#999999'}>Enter OTP</Text>
+                <View flexDirection="row" alignItems="center" justifyContent="space-between" columnGap={25} mv={8} mh={16}>
+                    {otp.map((_,index) => {
+                        return (
+                            <VerifyTextInput
+                                key={index}
+                                index={index}
+                                otp={otp}
+                                inputs={inputs}
+                                handleInputChange={handleInputChange}
+                                handleKeyPress={handleKeyPress}
+                                handleSubmit={handleSubmit}
+                                />
+                            );
+                    } )}
+                </View>
+                {errorMessage && (
+                    <Text
+                    size={14}
+                    mb={8}
+                    mh={16}
+                    textAlign="center"
+                    color={colors.text_error}
+                    >
+                        {errorMessage}
+                    </Text>
+                )}
+                <Text size={14} mb={30} mh={16} color={'#999999'}>Resend OTP in 25 sec</Text>
+                <Button loading={loading} onPress={handleSubmit} title="Verify Now" />
+            </ScrollView>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.background_two,
-    },
-    text: {
-        fontFamily: 'Lato-Light',
-        marginHorizontal: 14,
-        fontSize: 12,
-        color: colors.text_dim,
-    },
-    text_one: {
-        fontFamily: 'Lato-Regular',
-        fontSize: 16,
-        marginBottom: 16,
-        color: colors.text_primary,
-    },
-    text_two: {
-        marginBottom: 8,
-    },
-    inputContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        columnGap: 25,
-        marginHorizontal: 16,
-        marginBottom: 8,
-    },
-    input: {
-        width: 46,
-        height: 46,
-        textAlign: 'center',
-        color: colors.text_dim,
-        borderWidth: 1,
-        borderRadius: 10,
-        borderColor: colors.secondary,
-    },
-    text_three: {
-        marginBottom: 40,
-    },
-});
 
 export default VerifyScreen;

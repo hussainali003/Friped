@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "472761210351",
+    "project_id": "friped",
+    "storage_bucket": "friped.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472761210351:android:4dd8bd07309af4c877121a",
+        "android_client_info": {
+          "package_name": "com.friped"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdyOYlG9QiBmW3w85F4P1MmrBMSQDQqI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

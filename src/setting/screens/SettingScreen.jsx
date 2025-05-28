@@ -11,6 +11,7 @@ import SignOutSvg from '../../assets/images/sign_out.svg';
 import UserAddLightSvg from '../../assets/images/user_add_light.svg';
 
 import * as colors from '../../config/colors';
+import { getAuth } from '@react-native-firebase/auth';
 
 const SettingScreen = () => {
     const insets = useSafeAreaInsets();
@@ -20,13 +21,21 @@ const SettingScreen = () => {
         naivgation.navigate('HomeTab', {screen: 'RulesAndTerms'});
     };
 
+    const handleLogout = async () => {
+        try {
+            await getAuth().signOut();
+        } catch (err) {
+
+        }
+    };
+
     return (
         <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title="Profile" />
             <ScrollView contentContainerStyle={styles.scrollContentContainer} style={styles.scrollContainer}>
                 <SettingOptionItem title="Switch account" left={<UserAddLightSvg />} />
                 <SettingOptionItem onPress={handleNavigateToRulesAndTerms} title="Rules and terms" left={<FileLightSvg />} />
-                <SettingOptionItem title="Sign out" left={<SignOutSvg />} />
+                <SettingOptionItem onPress={handleLogout} title="Sign out" left={<SignOutSvg />} />
             </ScrollView>
         </View>
     );

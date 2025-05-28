@@ -6,3 +6,4 @@ export const background_two = '#EDDBDE';
 export const dashLine = '#B76E79';
 export const text_dim = '#666666';
 export const text_primary = '#333333';
+export const text_error = '#DD0612';
