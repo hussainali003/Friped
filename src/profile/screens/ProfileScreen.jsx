@@ -3,7 +3,6 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { Header } from '../../common';
 
-import EditProfileImage from '../sections/ProfileMediaSection';
 import ProfileOptionItem from '../components/Profile/ProfileOptionItem';
 
 import PinGreySvg from '../../assets/images/pin_grey.svg';
@@ -43,7 +42,6 @@ const ProfileScreen = () => {
         <View style={[styles.container, {paddingTop: insets.top}]}>
             <Header title="Profile" />
             <ScrollView style={styles.scrollContainer}>
-                <EditProfileImage />
                 <View style={styles.contentContainer}>
                     {profileOptions.map((item, index) => (
                         <ProfileOptionItem key={index} title={item.title} left={<item.icon />}/>

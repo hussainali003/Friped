@@ -24,7 +24,6 @@ const Button = ({onPress, loading = false, type, mb, title, children, textStyle,
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 14,
-        marginHorizontal: 16,
         borderRadius: 10,
         backgroundColor: colors.secondary,
     },

@@ -10,6 +10,7 @@ export {default as NoticeSection} from './NoticeSection';
 export {default as PromoSection} from './PromoSection';
 export {default as Text} from './Text';
 export {default as View} from './View';
+export {default as TouchableOpacity} from './TouchableOpacity';
 
 
 

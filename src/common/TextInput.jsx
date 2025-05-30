@@ -2,11 +2,18 @@ import { View, TextInput as RNTextInput, Text, StyleSheet } from 'react-native';
 
 import * as colors from '../config/colors';
 
-const TextInput = ({inputMode = 'text', label, placeholder, mb, textStyle, inputStyle, style}) => {
+const TextInput = ({inputMode = 'text', value, label, placeholder, mb, textStyle, inputStyle, onChangeText, style}) => {
     return (
         <View style={[styles.container, {marginBottom: mb}, style]}>
             <Text style={[styles.label, textStyle]}>{label}</Text>
-            <RNTextInput inputMode={inputMode} placeholder={placeholder} placeholderTextColor="#8C8C8C" style={[styles.input, inputStyle]} />
+            <RNTextInput
+                value={value}
+                inputMode={inputMode}
+                placeholder={placeholder}
+                placeholderTextColor="#8C8C8C"
+                onChangeText={(e) => onChangeText(e)}
+                style={[styles.input, inputStyle]}
+            />
         </View>
     );
 };

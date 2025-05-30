@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet} from 'react-native';
 
+import ChevronDownSvg from '../assets/images/chevron_down_dark.svg';
+
 import * as colors from '../config/colors';
 
-import ChevronDownSvg from '../assets/images/chevron_down.svg';
-
-const Dropdown = ({label = 'Choose your role', roles, selected, setSelected, style, labelStyle, selectorStyle, selectTextStyle}) => {
+const Dropdown = ({label = 'Choose your role', roles, onPress, selected, style, labelStyle, selectorStyle, selectTextStyle}) => {
   const [showOptions, setShowOptions] = useState(false);
 
-  const handleSelect = (role) => {
-    setSelected(role);
+  const handleDropDownClose = (role) => {
+    onPress(role);
     setShowOptions(false);
   };
 
@@ -31,7 +31,7 @@ const Dropdown = ({label = 'Choose your role', roles, selected, setSelected, sty
       {showOptions && (
         <View style={styles.dropdown}>
           {roles.map((role) => (
-            <Pressable key={role} onPress={() => handleSelect(role)} style={styles.option}>
+            <Pressable key={role} onPress={() => handleDropDownClose(role)} style={styles.option}>
               <Text style={styles.optionText}>{role}</Text>
             </Pressable>
           ))}
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 22,
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: '#ccc',
+    borderColor: '#8C8C8C',
     backgroundColor: '#fff',
   },
   selectedText: {
