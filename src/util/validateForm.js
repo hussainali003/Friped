@@ -15,10 +15,11 @@ export const validateFullName = (fullname) => {
 // Date of Birth
 export const validateDate = (date) => {
   let error = '';
-  if (!date?.trim()) {
-    error = 'Date of birth is required.';
-  } else if (!/^\d{2}\/\d{2}\/\d{4}$/.test(date)) {
-    error = 'Date of birth must be in format DD/MM/YYYY.';
+
+  if (!(date instanceof Date) || isNaN(date)) {
+    error = 'Invalid date.';
+  } else if (date > new Date()) {
+    error = 'Date of birth cannot be in the future.';
   }
 
   return error;
