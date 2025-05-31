@@ -7,6 +7,8 @@ type FontWeight = 'light' | 'medium' | 'bold' | 'regular';
 
 interface CustomTextProps extends RNTextProps {
   children?: ReactNode;
+  ml?: number;
+  mr?: number;
   mt?: number;
   mb?: number;
   mv?: number;
@@ -21,6 +23,8 @@ interface CustomTextProps extends RNTextProps {
 
 const Text: React.FC<CustomTextProps> = ({
   children,
+  ml,
+  mr,
   mt,
   mb,
   mv,
@@ -54,6 +58,8 @@ const Text: React.FC<CustomTextProps> = ({
         extractSelectedFontFamily(),
         textAlign !== undefined && { textAlign },
         lineHeight !== undefined && { lineHeight },
+        ml !== undefined && { marginLeft: ml },
+        mr !== undefined && { marginRight: mr },
         mt !== undefined && { marginTop: mt },
         mb !== undefined && { marginBottom: mb },
         mv !== undefined && { marginVertical: mv },

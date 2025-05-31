@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import BootSplash from 'react-native-bootsplash';
-import { getAuth } from '@react-native-firebase/auth';
-import { doc, getDoc, getFirestore } from '@react-native-firebase/firestore';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { getAuth } from '@react-native-firebase/auth';
+import { doc, getFirestore, onSnapshot } from '@react-native-firebase/firestore';
 
 import BuyerBottomTab from './BuyerBottomTab';
 
 import SellerBottomTab from './SellerBottomTab';
 
+import LocationScreen from '../location/screens/LocationScreen';
 import EditProfileScreen from '../profile/screens/EditProfileScreen';
 import LocationPremissionScreen from '../location/screens/LocationPremissionScreen';
 
@@ -22,28 +24,31 @@ import NotificationsScreen from '../notifications/screens/NotificationsScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
+    const [role, setRole] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [initializing, setInitializing] = useState(true);
     const [isProfileComplete, setIsProfileComplete] = useState(false);
-    const isSeller = true;
 
     useEffect(() => {
         const unsubscribe = getAuth().onAuthStateChanged(async (user) => {
             if (user) {
                 setIsLoggedIn(true);
 
-                try {
-                    const userDoc = await getDoc(doc(getFirestore(), 'users', user.uid));
+                const userDocRef = doc(getFirestore(), 'users', user.uid);
 
+                const unsubscribeUserDoc = onSnapshot(userDocRef, (userDoc) => {
                     if (userDoc.exists()) {
                         const data = userDoc.data();
+                        setRole(data?.role);
                         setIsProfileComplete(data?.isProfileComplete ?? false);
                     } else {
                         setIsProfileComplete(false);
                     }
-                } catch (err) {
-                    console.log(err);
-                }
+                });
+
+                setInitializing(false);
+
+                return () => unsubscribeUserDoc();
 
             } else {
                 setIsLoggedIn(false);
@@ -61,33 +66,29 @@ const AppNavigator = () => {
 
     },[initializing]);
 
+    console.log(role);
+
     return (
-      <NavigationContainer>
+      <NavigationContainer key={isProfileComplete ? 'complete' : 'incomplete'}>
         <Stack.Navigator screenOptions={{ headerShown: false, animation: 'fade'}}>
             {isLoggedIn ? (
                 isProfileComplete ? (
                     <>
-                        {isSeller ? (
-                            <>
-                                <Stack.Screen name="SellerBottomTab" component={SellerBottomTab} />
-                            </>
-                        ) : (
-                            <>
-                                <Stack.Screen name="BottomTab" component={BuyerBottomTab} />
-                            </>
-                        )}
-                        <Stack.Screen name="Notifications" component={NotificationsScreen} />
+                        {role === 'Both' && <Stack.Screen name="BottomTab" component={BuyerBottomTab} />}
+                        {role === 'Seller' && <Stack.Screen name="SellerBottomTab" component={SellerBottomTab} />}
                         <Stack.Screen name="Chat" component={ChatScreen} />
                         <Stack.Screen name="Rating" component={RatingScreen} />
                         <Stack.Screen name="GiveRating" component={GiveRatingScreen} />
-                        <Stack.Screen name="ExchangeRating" component={ExchangeRatingScreen} />
                         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+                        <Stack.Screen name="Notifications" component={NotificationsScreen} />
+                        <Stack.Screen name="ExchangeRating" component={ExchangeRatingScreen} />
                         <Stack.Screen name="LocationPremission" component={LocationPremissionScreen} />
                     </>
                 ) : (
                     <>
-                        <Stack.Screen name="EditProfile" component={EditProfileScreen} />
                         <Stack.Screen name="LocationPremission" component={LocationPremissionScreen} />
+                        <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+                        <Stack.Screen name="Location" component={LocationScreen} />
                     </>
                 )
             ) : (
