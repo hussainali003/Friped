@@ -1,4 +1,5 @@
-import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import { useSelector } from 'react-redux';
+import {Text, TouchableOpacity, View} from './index';
 import { useNavigation } from '@react-navigation/native';
 
 import ArrowLeftSvg from '../assets/images/arrow_left_light.svg';
@@ -6,25 +7,22 @@ import SearchAltLightSvg from '../assets/images/search_alt_light.svg';
 import MeassageLightSvg from '../assets/images/message_light.svg';
 import BellPinLightSvg from '../assets/images/bell_pin_light.svg';
 
-const Header = ({user = 'seller', title, mb, style}) => {
+const Header = ({title, disabled, mb, style}) => {
     const navigation = useNavigation();
+    const user = useSelector((state) => state.auth.user);
 
     const handleNavigateToBack = () => {
         if (navigation.canGoBack()) {
             navigation.goBack();
-        } else if (user === 'seller') {
+        } else if (user === 'Seller') {
             navigation.navigate('Dashboard');
-        } else if (user === 'buyer') {
+        } else if (user === 'Both') {
             navigation.navigate('Home');
         }
     };
 
     const handleNavigateToInbox = () => {
-        if (user === 'buyer') {
-            navigation.navigate('HomeTab', { screen: 'Inbox'});
-        } else if (user === 'seller') {
-            navigation.navigate('DashboardTab', { screen: 'Inbox'});
-        }
+        navigation.navigate('Inbox');
     };
 
     const handleNavigateToNotifications = () => {
@@ -32,52 +30,24 @@ const Header = ({user = 'seller', title, mb, style}) => {
     };
 
     return (
-        <View style={[styles.container, {marginBottom: mb}, style]}>
-            <TouchableOpacity onPress={handleNavigateToBack} style={styles.leftButton}>
+        <View w="100%" flexDirection="row" alignItems="center" style={[{marginBottom: mb}, style]}>
+            <TouchableOpacity pl={16} ph={8} onPress={handleNavigateToBack} disabled={disabled}>
                 <ArrowLeftSvg />
             </TouchableOpacity>
-            <Text style={styles.text}>{title}</Text>
-            <View style={styles.rightContainer}>
-                <TouchableOpacity style={styles.rightButton}>
+            <Text size={20}>{title}</Text>
+            <View flexDirection="row" ml="auto">
+                <TouchableOpacity pv={16} ph={10} disabled={disabled}>
                     <SearchAltLightSvg />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleNavigateToInbox} style={styles.rightButton}>
+                <TouchableOpacity pv={16} ph={10} onPress={handleNavigateToInbox} disabled={disabled}>
                     <MeassageLightSvg />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleNavigateToNotifications} style={styles.rightButton}>
+                <TouchableOpacity pv={16} ph={10} onPress={handleNavigateToNotifications} disabled={disabled}>
                     <BellPinLightSvg />
                 </TouchableOpacity>
             </View>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    leftButton: {
-        paddingVertical: 16,
-        paddingHorizontal: 12,
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 400,
-    },
-    rightContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        columnGap: 2,
-        marginLeft: 'auto',
-        paddingRight: 12,
-    },
-    rightButton: {
-        paddingVertical: 16,
-        paddingHorizontal: 8,
-    },
-});
 
 export default Header;

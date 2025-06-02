@@ -15,7 +15,7 @@ import * as colors from '../../config/colors';
 
 const profileOptions = [
     {
-        title: 'LocationOptions',
+        title: 'My address',
         icon: PinGreySvg,
     },
     {
@@ -23,7 +23,7 @@ const profileOptions = [
         icon: StarLightSvg,
     },
     {
-        title: 'Transactions',
+        title: 'List of transactions',
         icon: PaperLightSvg,
     },
     {
@@ -44,7 +44,7 @@ const ProfileScreen = () => {
             <ScrollView style={styles.scrollContainer}>
                 <View style={styles.contentContainer}>
                     {profileOptions.map((item, index) => (
-                        <ProfileOptionItem key={index} title={item.title} left={<item.icon />}/>
+                        <ProfileOptionItem key={index} item={item} />
                     ))}
                 </View>
             </ScrollView>

@@ -1,35 +1,35 @@
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 
-const SettingOptionItem = ({left, title, onPress}) => {
+import { TouchableOpacity, Text } from '../../../common';
+
+const SettingOptionItem = ({item, disabled, isLoading, onPress}) => {
+    const IconComponent = item.icon;
+
+    const getLoadingAndTitleGiveLoadingIndicator = (loading, title) => {
+        return title === loading ? true : false;
+    };
 
     return (
-        <TouchableOpacity onPress={onPress} style={styles.container}>
-            {left && (
-                left
-            )}
-            <Text style={[styles.title]}>
-                {title}
+        <TouchableOpacity
+            disabled={disabled}
+            onPress={onPress}
+            h={44}
+            flexDirection="row"
+            alignItems="center"
+            columnGap={6}
+            ph={12}
+            borderWidth={1}
+            borderRadius={8}
+            borderColor="#E6E6E6"
+        >
+            {getLoadingAndTitleGiveLoadingIndicator(isLoading, item.title) ?
+                <ActivityIndicator /> : <IconComponent />
+            }
+            <Text size={14} color="#77787D">
+                {item.title}
             </Text>
         </TouchableOpacity>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        height: 44,
-        flexDirection: 'row',
-        alignItems: 'center',
-        columnGap: 6,
-        paddingHorizontal: 12,
-        borderWidth: 1,
-        borderRadius: 8,
-        borderColor: '#E6E6E6',
-    },
-    title: {
-        fontSize: 14,
-        fontFamily: 'Lato-Regular',
-        color: '#77787D',
-    },
-});
 
 export default SettingOptionItem;
