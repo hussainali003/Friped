@@ -42,7 +42,6 @@ const LocationScreen = () => {
         const user = auth().currentUser;
 
         if (!user) {
-            console.warn('User not logged in');
             setIsLoading(false);
             return;
         }
@@ -138,9 +137,9 @@ const LocationScreen = () => {
                     minLength={0}
                     nearbyPlacesAPI="GooglePlacesSearch"
                     numberOfLines={1}
-                    onFail={(e) => { console.warn( 'Google Place Failed : ', e );  }}
-                    onNotFound={() => { }}
-                    onTimeout={() => console.warn('google places autocomplete: request timeout')}
+                    onFail={(error) => setErrorMessage( `Google Place Failed : ${error.message}` )}
+                    onNotFound={() => {}}
+                    onTimeout={() => setErrorMessage('google places autocomplete: request timeout')}
                     predefinedPlacesAlwaysVisible={false}
                     suppressDefaultStyles={false}
                     textInputHide={false}

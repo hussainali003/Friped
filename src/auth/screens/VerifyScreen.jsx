@@ -24,7 +24,6 @@ const VerifyScreen = () => {
     const phoneNumber = route?.params?.phoneNumber;
 
     const handleInputChange = (e, index) => {
-        console.log('value', e, 'index', index);
         setOtp(prev => prev.map((item, i) => {
             if (i === index) {
                 return e;

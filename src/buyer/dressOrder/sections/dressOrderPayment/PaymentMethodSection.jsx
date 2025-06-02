@@ -48,7 +48,6 @@ const PaymentMethodSection = () => {
     const [selectedRole, setSelectedRole] = useState('');
 
     const handleChangeCard = (card) => {
-        console.log(card);
 
         if (card === undefined) {
             return;
