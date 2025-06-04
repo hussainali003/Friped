@@ -2,9 +2,16 @@
 import { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Image } from 'react-native';
+import { StyleSheet, ScrollView, TextInput, Image } from 'react-native';
 
-import { Button } from '../../common';
+import {
+    GoogleSignin,
+} from '@react-native-google-signin/google-signin';
+import { getAuth, GoogleAuthProvider, signInWithCredential } from '@react-native-firebase/auth';
+
+import { Button, Text, View, TouchableOpacity } from '../../common';
+
+import LoginHeading from '../components/login/LoginHeading';
 
 import AppNameSvg from '../../assets/images/app_name.svg';
 import GoogleSvg from '../../assets/images/google_icon.svg';
@@ -13,21 +20,26 @@ import PersonSettingSvg from '../../assets/images/person_setting.svg';
 
 import PakistanFlagPng from '../../assets/images_png/pakistan_flag.png';
 
-import LoginHeading from '../components/login/LoginHeading';
+import { AuthContext } from '../../config/context';
 
 import validatePhoneNumber from '../../util/validatePhoneNumber';
-
-import { AuthContext } from '../../config/context';
 
 import * as colors from '../../config/colors';
 
 const LoginScreen = () => {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation();
-    const [loading, setLoading] = useState(false);
     const { sendCode } = useContext(AuthContext);
+
     const [phoneNumber, setPhoneNumber] = useState('');
+
+    const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+
+    const handleChangeText = (e) => {
+        setErrorMessage(null);
+        setPhoneNumber(e);
+    };
 
     const handleSubmit = async () => {
         setLoading(true);
@@ -52,25 +64,36 @@ const LoginScreen = () => {
         setLoading(false);
     };
 
-    const handleChangeText = (e) => {
-        setErrorMessage(null);
-        setPhoneNumber(e);
+    const handleSignInWithGoogle = async () => {
+        try {
+            await GoogleSignin.hasPlayServices();
+            const signInResult = await GoogleSignin.signIn();
+
+            const idToken = signInResult.data?.idToken;
+
+            const googleCredential = GoogleAuthProvider.credential(idToken);
+
+            await signInWithCredential(getAuth(), googleCredential);
+
+        }   catch (error) {
+            setErrorMessage(error.message);
+        }
     };
 
     return (
-        <View style={[styles.container, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+        <View flex={1} backgroundColor={colors.background_two} style={{paddingTop: insets.top, paddingBottom: insets.bottom + 20}}>
             <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
-                <View style={styles.iconContainer}>
+                <View alignItems="center" mb={35}>
                     <AppNameSvg />
                 </View>
-                <View style={styles.iconContainer}>
+                <View alignItems="center" mb={35}>
                     <PersonSettingSvg />
                 </View>
                 <LoginHeading title="Log in or sign up" />
-                <View style={styles.inputContainer}>
-                    <View style={styles.inputContent}>
+                <View flexDirection="row" alignItems="center" pv={6} mb={20} borderWidth={1} borderRadius={10} borderColor={colors.secondary}>
+                    <View h={'100%'} flexDirection="row" alignItems="center" columnGap={6} ml={22} style={styles.inputContent}>
                         <Image source={PakistanFlagPng} style={{width: 24,height: 16}} />
-                        <Text style={{fontSize: 14}}>92</Text>
+                        <Text size={14}>92</Text>
                         <ChevronDownSvg />
                     </View>
                     <TextInput
@@ -84,17 +107,17 @@ const LoginScreen = () => {
                         placeholderTextColor={colors.text_dim}
                     />
                 </View>
-                {errorMessage && <Text style={styles.text_error}>{errorMessage}</Text>}
+                {errorMessage && <Text size={14} fontFamily="medium" textAlign="center" color={colors.text_error}>{errorMessage}</Text>}
                 <Button loading={loading} onPress={handleSubmit} title="Send OTP" mb={25} />
                 <LoginHeading title="OR" size="small" />
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity onPress={handleSignInWithGoogle} alignItems="center">
                     <GoogleSvg />
                 </TouchableOpacity>
             </ScrollView>
-            <Text style={styles.text}>By continuing you will accept the
-                <Text style={styles.text_heading}> Terms of Use</Text>
+            <Text fontFamily="light" mt={'auto'} textAlign="center" color={colors.text_dim}>By continuing you will accept the
+                <Text> Terms of Use</Text>
                 {' '}and
-                <Text style={styles.text_heading}> Privacy and Policy</Text>
+                <Text> Privacy and Policy</Text>
                 {' '}of Cashlance.
             </Text>
         </View>
@@ -102,62 +125,15 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.background_two,
-    },
     scrollViewContentContainer: {
         paddingTop: 30,
-    },
-    iconContainer: {
-        alignItems: 'center',
-        marginBottom: 35,
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 6,
-        marginHorizontal: 16,
-        marginBottom: 20,
-        borderWidth: 1,
-        borderRadius: 10,
-        borderColor: colors.secondary,
-    },
-    inputContent: {
-        height: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        columnGap: 8,
-        marginLeft: 22,
+        paddingHorizontal: 16,
     },
     input: {
         flex: 1,
         fontSize: 14,
         fontFamily: 'Lato-Light',
         color: colors.text_primary,
-    },
-    text_error: {
-        marginHorizontal: 16,
-        marginBottom: 20,
-        textAlign: 'center',
-        fontSize: 14,
-        fontFamily: 'Lato-Medium',
-        color: colors.text_error,
-    },
-    buttonContainer: {
-      alignItems: 'center',
-    },
-    text: {
-        marginTop: 'auto',
-        marginBottom: 20,
-        marginHorizontal: 16,
-        textAlign: 'center',
-        fontFamily: 'Lato-Light',
-        color: colors.text_dim,
-    },
-    text_heading: {
-        color: colors.text_dim,
-        fontFamily: 'Lato-Regular',
     },
 });
 

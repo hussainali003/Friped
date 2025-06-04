@@ -102,8 +102,8 @@ const AppNavigator = () => {
                     </>
                 ) : (
                     <>
-                        <Stack.Screen name="LocationPremission" component={LocationPremissionScreen} />
                         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+                        <Stack.Screen name="LocationPremission" component={LocationPremissionScreen} />
                         <Stack.Screen name="Location" component={LocationScreen} />
                     </>
                 )

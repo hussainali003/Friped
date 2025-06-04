@@ -1,15 +1,15 @@
 import { useRoute } from '@react-navigation/native';
 import { useContext, useRef, useState } from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import VerifyTextInput from '../components/login/VerifyTextInput';
-
 import { Button, StackHeader, Text, View } from '../../common';
+
+import VerifyTextInput from '../components/login/VerifyTextInput';
 
 import { AuthContext } from '../../config/context';
 
 import * as colors from '../../config/colors';
-import { ScrollView } from 'react-native';
 
 const VerifyScreen = () => {
     const route = useRoute();
@@ -63,10 +63,10 @@ const VerifyScreen = () => {
     return (
         <View flex={1} backgroundColor={colors.background_two} style={{paddingTop: insets.top, paddingBottom: insets.bottom}}>
             <StackHeader title="Verify OTP" mb={25}/>
-            <ScrollView>
-                <Text size={16} mb={16} mh={16}>Enter OTP sent on {phoneNumber}</Text>
-                <Text size={14} mh={16} color={'#999999'}>Enter OTP</Text>
-                <View flexDirection="row" alignItems="center" justifyContent="space-between" columnGap={25} mv={8} mh={16}>
+            <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
+                <Text size={16} mb={16}>Enter OTP sent on {phoneNumber}</Text>
+                <Text size={14} color={'#999999'}>Enter OTP</Text>
+                <View flexDirection="row" alignItems="center" justifyContent="space-between" columnGap={25} mv={8}>
                     {otp.map((_,index) => {
                         return (
                             <VerifyTextInput
@@ -85,18 +85,23 @@ const VerifyScreen = () => {
                     <Text
                     size={14}
                     mb={8}
-                    mh={16}
                     textAlign="center"
                     color={colors.text_error}
                     >
                         {errorMessage}
                     </Text>
                 )}
-                <Text size={14} mb={30} mh={16} color={'#999999'}>Resend OTP in 25 sec</Text>
+                <Text size={14} mb={30}>Resend OTP in 25 sec</Text>
                 <Button loading={loading} onPress={handleSubmit} title="Verify Now" />
             </ScrollView>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    scrollViewContentContainer: {
+        paddingHorizontal: 16,
+    },
+});
 
 export default VerifyScreen;
